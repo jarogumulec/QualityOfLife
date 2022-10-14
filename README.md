@@ -1,9 +1,9 @@
 # QualityOfLife
 
 ## Todo
-- [ ] replace wikipedia sources with primary sources
-- [ ] add countries all europe, Canada,..
-- [ ] deal with "more is better" issue.  Should present as 1/x?  
+* [ ] replace wikipedia sources with primary sources
+* [ ] add countries all europe, Canada,..
+* [ ] deal with "more is better" issue.  Should present as 1/x?  
 
 
 ## Sources of data
