@@ -10,11 +10,9 @@
 
 * Debt/GDP: 
 * Cena bydlení: data https://www.statista.com/statistics/722905/average-residential-square-meter-prices-in-eu-28-per-country/
-* Mzda https://en.wikipedia.org/wiki/List_of_European_countries_by_average_wage
-Čína někde internet
+* Mzda https://en.wikipedia.org/wiki/List_of_European_countries_by_average_wage Čína někde internet
 * Quality of life index https://www.numbeo.com/quality-of-life/rankings_by_country.jsp - quality of life index 2021 - (více je lépe)
-* Science https://www.scimagojr.com/countryrank.php - Citations per item (více je lépe)
-(estonia the one nature science)
+* Science https://www.scimagojr.com/countryrank.php - Citations per item (více je lépe) - (estonia the one nature science)
 * Protected areas https://www.indexmundi.com/facts/indicators/ER.LND.PTLD.ZS/rankings: *primary assessmant indicate its relativelly irrelevant*
 * Amount in forrests% https://en.wikipedia.org/wiki/List_of_countries_by_forest_area
 * Forrest/land area https://data.worldbank.org/indicator/AG.LND.FRST.ZS
