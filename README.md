@@ -20,10 +20,10 @@
 * Healthcare https://www.numbeo.com/health-care/rankings_by_country.jsp healthcare index (více je lépe)
 * Soc welfare https://en.wikipedia.org/wiki/List_of_countries_by_social_welfare_spending
 * Gobal_peace https://en.wikipedia.org/wiki/Global_Peace_Index (méně je lepší) _OPRINV
-* [ ] Extremismus
+* Extremismus
 *  Tolerance k LGBT https://en.wikipedia.org/wiki/Gay-friendly - Gay Friendly total (více je lépe)
 * Konzumace alkoholu https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita
-* [ ] export do číny nebo vztah k číně
+* export do číny nebo vztah k číně
 * Odolnost k fake news https://edition.cnn.com/interactive/2019/05/europe/finland-fake-news-intl/ (více je lépe)
 * VŠ vzdělání https://en.wikipedia.org/wiki/List_of_countries_by_tertiary_education_attainment (%) více je více (2019 OECD)
 * Cestování, nalínáno per capita
