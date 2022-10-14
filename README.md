@@ -1,9 +1,15 @@
 # QualityOfLife
 
+## Todo
+- [ ] replace wikipedia sources with primary sources
+- [ ] add countries all europe, Canada,..
+- [ ] deal with "more is better" issue.  Should present as 1/x?  
+
+
 ## Sources of data
 
-- Debt/GDP: 
-- Cena bydlení: data https://www.statista.com/statistics/722905/average-residential-square-meter-prices-in-eu-28-per-country/
+* Debt/GDP: 
+* Cena bydlení: data https://www.statista.com/statistics/722905/average-residential-square-meter-prices-in-eu-28-per-country/
 - Mzda https://en.wikipedia.org/wiki/List_of_European_countries_by_average_wage
 Čína někde internet
 - Quality of life index https://www.numbeo.com/quality-of-life/rankings_by_country.jsp - quality of life index 2021 - (více je lépe)
