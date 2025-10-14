@@ -28,10 +28,10 @@ qualityoflife_country_compare_2021 <- read_excel("qualityoflife_country_compare_
 # heatmap --------------------------------
 
 # legend = paste(log2fc_fadu$primary.culture, exprese_kokultivace_indirectonly$cisplatin_irrad, exprese_kokultivace_indirectonly$affected_by, sep=" ")
-legend = paste(qualityoflife_country_compare_2021$Zem�, sep=" ")
+#legend = paste(qualityoflife_country_compare_2021$Zem?, sep=" ")
 legend = paste(qualityoflife_country_compare_2021$Země, sep=" ")
 lgnd = paste(qualityoflife_country_compare_2021$Země, sep=" ")
-lgnd = paste(qualityoflife_country_compare_2021$Zem�, sep=" ")
+#lgnd = paste(qualityoflife_country_compare_2021$Zem?, sep=" ")
 
 
 scaled <- scale(qualityoflife_country_compare_2021[,2:ncol(qualityoflife_country_compare_2021)])
@@ -70,6 +70,9 @@ plotVar(principalcomp, comp = c(1, 2), cex = 2.1,
 
 #biplot(principalcomp, cex = 0.7, xlabs = lgnd)
 
-
+# identiciface jak dulezite ty faktory jsou
+# scree plot přímo z mixOmics
+plotLoadings(principalcomp, comp = 1, ndisplay = 10)
+plotLoadings(principalcomp, comp = 2, ndisplay = 10)
 
 # as 
