@@ -72,7 +72,7 @@ plotVar(principalcomp, comp = c(1, 2), cex = 2.1,
 
 # identiciface jak dulezite ty faktory jsou
 # scree plot přímo z mixOmics
-plotLoadings(principalcomp, comp = 1, ndisplay = 10)
-plotLoadings(principalcomp, comp = 2, ndisplay = 10)
+plotLoadings(principalcomp, comp = 1, ndisplay = 20)
+plotLoadings(principalcomp, comp = 2, ndisplay = 20)
 
 # as 
