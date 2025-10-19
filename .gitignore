@@ -3,3 +3,7 @@ PCA_loadings_comp2.png
 .RData
 .Rhistory
 plot_zoom_png?width=812&height=799.png
+dsub_prefilter.csv
+trajectory_Czechia_pc12_locf.csv
+trajectory_Germany_pc12_locf.csv
+trajectory_Slovak_Republic_pc12_locf.csv
