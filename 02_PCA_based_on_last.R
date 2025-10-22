@@ -1,10 +1,10 @@
 # Minimal PCA on "latest available per indicator per country" (no imputation)
 library(data.table)
 
-infile <- "qualityoflife_wide.csv"
+infile <- "qualityoflife_merged.csv"
 dt <- fread(infile)
 
-id_country <- "Country Name"
+id_country <- "Country"
 id_year    <- "Year"
 ind_cols   <- setdiff(names(dt), c(id_country, id_year))
 
@@ -44,17 +44,76 @@ loadings <- data.table(indicator = colnames(X),
                        PC1 = p$rotation[,1], PC2 = p$rotation[,2])
 
 # 6) Plots
-plot(scores$PC1, scores$PC2,
-     xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
-     ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
-     main = "Countries in PC1–PC2 (latest available per indicator)", pch = 19, cex = 0.6)
- text(scores$PC1, scores$PC2, labels = scores$`Country Name`, cex = 0.6, pos = 3)
 
-plot(loadings$PC1, loadings$PC2,
-     xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
-     ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
-     main = "Loadings in PC1–PC2 (latest snapshot)", pch = 19, cex = 0.6)
-text(loadings$PC1, loadings$PC2, labels = loadings$indicator, cex = 0.6, pos = 3)
+# #oldschool but text overlapping
+# plot(scores$PC1, scores$PC2,
+#      xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
+#      ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
+#      main = "Countries in PC1–PC2 (2025*)", pch = 19, cex = 0.6)
+# text(scores$PC1, scores$PC2, labels = scores$`Country Name`, cex = 0.6, pos = 3)
+# 
+# plot(loadings$PC1, loadings$PC2,
+#      xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
+#      ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
+#      main = "Loadings in PC1–PC2 (2025*)", pch = 19, cex = 0.6)
+# text(loadings$PC1, loadings$PC2, labels = loadings$indicator, cex = 0.6, pos = 3)
+
+#alternatively in ggplot
+
+library(ggplot2)
+library(ggrepel)
+
+ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_point(size = 1.6, color = "gray25") +
+  geom_text_repel(
+    size = 3,
+    max.overlaps = Inf,
+    box.padding = 0.5,
+    point.padding = 0.3
+  ) +
+  labs(
+    x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
+    y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)"),
+    title = "Countries in PC1–PC2 (2025*)"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),     # remove gray grid
+    axis.line = element_blank(),      # remove ggplot’s own axis lines
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9)
+  )
+
+#loadings plotting
+
+ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_point(size = 1.8, color = "gray25") +
+  geom_text_repel(
+    size = 3,
+    max.overlaps = Inf,
+    box.padding = 0.5,
+    point.padding = 0.3
+  ) +
+  labs(
+    x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
+    y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)"),
+    title = "Loadings in PC1–PC2 (2025*)"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),     # removes background grid
+    axis.line = element_blank(),      # remove default axis lines
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9)
+  )
+
+
 
 # 7) Save minimal artifacts for later projection
 saveRDS(list(pca = p, variables = colnames(X), center = p$center, scale = p$scale),

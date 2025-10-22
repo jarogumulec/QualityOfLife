@@ -72,8 +72,8 @@ qualityoflife_wide <- qualityoflife_long_merged[, c(
 qualityoflife_wide <- qualityoflife_wide[
   order(qualityoflife_wide$`Country Name`, qualityoflife_wide$Year), 
 ]
-
+colnames(qualityoflife_wide)[1] <- "Country"
 
 # ==== 5) Save (optional) ====
-write.csv(qualityoflife_wide, "qualityoflife_wide.csv", row.names = FALSE, na = "")
+write.csv(qualityoflife_wide, "qualityoflife_wide_WB.csv", row.names = FALSE, na = "")
 
