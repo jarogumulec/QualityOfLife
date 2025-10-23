@@ -5,9 +5,9 @@ library(ggplot2)
 library(ggrepel)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Poland"     # e.g. "Czechia", "Slovak Republic"
-years_win       <- 1995:2023
-ref_year        <- 2024
+country_to_plot <- "Ukraine"     # e.g. "Czechia", "Slovak Republic"
+years_win       <- 1995:2024
+ref_year        <- 2024  # PCAs created to 2024 only. most data absent for 25
 
 infile_data <- "qualityoflife_merged.csv"
 pca_dir     <- "PCAmodel"
@@ -143,3 +143,4 @@ ggsave(filename = out_png, plot = p, width = 7.2, height = 4.8, dpi = 300)
 cat("Saved trajectory CSV:   ", out_csv_traj,  "\n")
 cat("Saved metrics CSV:      ", out_csv_stats, "\n")
 cat("Saved figure PNG:       ", out_png,       "\n")
+  

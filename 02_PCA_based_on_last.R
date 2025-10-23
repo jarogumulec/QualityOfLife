@@ -6,10 +6,15 @@ library(ggrepel) # for PCA
 infile <- "qualityoflife_merged.csv"
 dt <- fread(infile)
 
+numcols <- setdiff(names(dt), c("Country", "Year"))
+dt[, (numcols) := lapply(.SD, as.numeric), .SDcols = numcols]
+
+
+
 id_country <- "Country"
 id_year    <- "Year"
 ind_cols   <- setdiff(names(dt), c(id_country, id_year))
-cutoff_year <- 2019  # use any earlier year if missing
+cutoff_year <- 2024  # use any earlier year if missing
 
 # ==== 1) Sort by country + year ascending ====
 setorderv(dt, cols = c(id_country, id_year), order = c(1, 1), na.last = TRUE)
