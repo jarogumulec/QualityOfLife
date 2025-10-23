@@ -12,7 +12,7 @@ target_countries <- c(
   "Ireland","Iceland","Italy","Japan","Lithuania", "Latvia","Moldova",
   "Montenegro","Netherlands","Norway","New Zealand","Poland","Romania",
   "Russian Federation","Serbia","Slovak Republic","Slovenia","Sweden","Turkiye",
-  "Ukraine","United States"
+  "Ukraine","United States", "Portugal"
 )
 
 name_map <- c(

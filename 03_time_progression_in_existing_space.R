@@ -1,76 +1,145 @@
-# 03_project_trajectory_fill.R
-# Projekce trajektorie jedné země do fixního PCA prostoru s LOCF+NOCB uvnitř země.
-# Vstupy: pca_model_latest.rds (z minulého skriptu), qualityoflife_wide.csv
-# Volitelné: pca_scores_latest_pc12.csv pro šedé pozadí
+# 03_project_trajectory_fill_refyear.R
 
 library(data.table)
+library(ggplot2)
+library(ggrepel)
 
-country_to_plot <- "Germany"  # "Slovak Republic" # Slovak Republic # Czechia 
-years_win <- 1995:2023
+# =================== USER PARAMETERS ===================
+country_to_plot <- "Poland"     # e.g. "Czechia", "Slovak Republic"
+years_win       <- 1995:2023
+ref_year        <- 2024
 
-infile_data   <- "qualityoflife_wide.csv"
-model_rds     <- "pca_model_latest.rds"
-scores_bg_csv <- "pca_scores_latest_pc12.csv"   # nebo NULL
-out_csv       <- sprintf("trajectory_%s_pc12_locf.csv", gsub("\\s+","_",country_to_plot))
+infile_data <- "qualityoflife_merged.csv"
+pca_dir     <- "PCAmodel"
+out_dir     <- "trajectory"
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
-# --- načti model a data ---
-mdl <- readRDS(model_rds)          # list(pca, variables, center, scale)
-vars <- mdl$variables              # přesně ty sloupce, na které je PCA natrénované
-dt  <- fread(infile_data)
+model_rds <- file.path(pca_dir, sprintf("pca_model_%d.rds", ref_year))
+scores_bg <- file.path(pca_dir, sprintf("pca_scores_%d_pc12.csv", ref_year))  # optional
 
-id_country <- "Country Name"
+out_csv_traj  <- file.path(out_dir, sprintf("trajectory_%s_%d_pc12_locf.csv",
+                                            gsub("\\s+","_", country_to_plot), ref_year))
+out_csv_stats <- file.path(out_dir, sprintf("trajectory_metrics_%s_%d.csv",
+                                            gsub("\\s+","_", country_to_plot), ref_year))
+out_png       <- file.path(out_dir, sprintf("trajectory_%s_%d_pc12_locf.png",
+                                            gsub("\\s+","_", country_to_plot), ref_year))
+# =======================================================
+
+# --- load model and data ---
+mdl <- readRDS(model_rds)    # list(pca, variables, center, scale)
+vars <- mdl$variables
+dt   <- fread(infile_data)
+
+id_country <- "Country"
 id_year    <- "Year"
 
-# --- podmnožina země a let, vytvoř plné roky 1995–2023 ---
+# --- subset to country and ensure full year window ---
 dsub <- dt[get(id_country) == country_to_plot, c(id_year, vars), with = FALSE]
 setnames(dsub, id_year, "Year")
 dsub <- merge(data.table(Year = years_win), dsub, by = "Year", all.x = TRUE)
 setorder(dsub, Year)
 
-# --- LOCF + NOCB per indikátor; pokud vše NA, nastav na modelový průměr (neutral) ---
+# --- LOCF + NOCB per indicator; if all NA for this country, set to model center ---
 for (v in vars) {
   vec <- dsub[[v]]
   if (all(is.na(vec))) {
-    # indikátor pro danou zemi nikdy nemá hodnotu -> nastav na modelový průměr (raw units)
     dsub[[v]] <- mdl$center[v]
   } else {
-    # vyplň uvnitř intervalu 1995–2023 dopředně i zpětně
     vec <- nafill(vec, type = "locf")
     vec <- nafill(vec, type = "nocb")
     dsub[[v]] <- vec
   }
 }
 
-# --- standardizace stejnými parametry jako PCA model ---
-for (v in vars) {
-  dsub[[v]] <- (dsub[[v]] - mdl$center[v]) / mdl$scale[v]
-}
+# --- standardize with same center/scale as the PCA model ---
+for (v in vars) dsub[[v]] <- (dsub[[v]] - mdl$center[v]) / mdl$scale[v]
 
-# --- projekce do PCA prostoru ---
-X <- as.matrix(dsub[, ..vars])
+# --- project into PCA space ---
+X    <- as.matrix(dsub[, ..vars])
 proj <- X %*% mdl$pca$rotation
 traj <- data.table(Year = dsub$Year, PC1 = proj[,1], PC2 = proj[,2])
 
-fwrite(traj, out_csv)
+# --- trajectory metrics: path length, net displacement, directionality, angle ---
+euclid <- function(x1,y1,x2,y2) sqrt((x2 - x1)^2 + (y2 - y1)^2)
 
-# --- jednoduchý plot + volitelné pozadí ---
-if (!is.null(scores_bg_csv) && file.exists(scores_bg_csv)) {
-  bg <- fread(scores_bg_csv)
-  plot(bg$PC1, bg$PC2, pch = 19, cex = 0.5, col = "grey75",
-       xlab = paste0("PC1 (", round(100*summary(mdl$pca)$importance[2,1],1), "%)"),
-       ylab = paste0("PC2 (", round(100*summary(mdl$pca)$importance[2,2],1), "%)"),
-       main = sprintf("%s: trajectory in PCA space (LOCF+NOCB inside country)", country_to_plot))
+# traj: data.table/data.frame se sloupci PC1, PC2 (bez NA po projekci)
+
+if (nrow(traj) >= 2) {
+  # délka cesty (součet eukleid. vzdáleností mezi po sobě jdoucími roky)
+  dxv <- diff(traj$PC1)
+  dyv <- diff(traj$PC2)
+  seg_len     <- sqrt(dxv^2 + dyv^2)
+  path_length <- sum(seg_len, na.rm = TRUE)
+  
+  # čistý posun start -> end
+  n  <- nrow(traj)
+  dx <- traj$PC1[n] - traj$PC1[1]
+  dy <- traj$PC2[n] - traj$PC2[1]
+  net_disp <- sqrt(dx^2 + dy^2)
+  
+  directionality <- if (is.finite(path_length) && path_length > 0) net_disp / path_length else NA_real_
+  angle_deg      <- atan2(dy, dx) * 180 / pi
 } else {
-  plot(NA, xlim = range(traj$PC1), ylim = range(traj$PC2),
-       xlab = paste0("PC1 (", round(100*summary(mdl$pca)$importance[2,1],1), "%)"),
-       ylab = paste0("PC2 (", round(100*summary(mdl$pca)$importance[2,2],1), "%)"),
-       main = sprintf("%s: trajectory in PCA space (LOCF+NOCB)", country_to_plot))
+  path_length <- net_disp <- directionality <- angle_deg <- NA_real_
 }
 
-abline(h = 0, v = 0, col = "grey85", lty = 3)
-lines(traj$PC1, traj$PC2, lwd = 2)
-points(traj$PC1, traj$PC2, pch = 19, cex = 0.6)
-lab_idx <- unique(c(1, nrow(traj), seq(1, nrow(traj), by = 5)))
-text(traj$PC1[lab_idx], traj$PC2[lab_idx], labels = traj$Year[lab_idx], cex = 0.7, pos = 3)
+metrics <- data.table(
+  Country = country_to_plot,
+  ref_year = ref_year,
+  start_year = min(years_win), end_year = max(years_win),
+  path_length = path_length,
+  net_displacement = net_disp,
+  directionality = directionality,
+  angle_deg = angle_deg
+)
 
-cat("Saved trajectory: ", out_csv, "\n")
+# save numeric outputs
+fwrite(traj,    out_csv_traj)
+fwrite(metrics, out_csv_stats)
+
+# --- optional background: reference-year scores (grey points) ---
+bg <- NULL
+if (file.exists(scores_bg)) {
+  bg <- fread(scores_bg)[, .(PC1, PC2)]
+}
+
+# --- label years: endpoints + every 5th year (repelled to reduce overlaps) ---
+label_years <- sort(unique(c(min(years_win), max(years_win), seq(min(years_win), max(years_win), by = 5))))
+lab_df <- traj[Year %in% label_years]
+
+# --- axis labels with variance explained ---
+pc1_lab <- paste0("PC1 (", round(100 * summary(mdl$pca)$importance[2,1], 1), "%)")
+pc2_lab <- paste0("PC2 (", round(100 * summary(mdl$pca)$importance[2,2], 1), "%)")
+title_lab <- sprintf("%s: trajectory in PCA space (ref=%d, LOCF+NOCB)", country_to_plot, ref_year)
+
+# subtitle with metrics (rounded)
+sub_lab <- sprintf("Path length = %.2f, Net disp. = %.2f, Directionality = %.2f, Angle = %.1f°",
+                   path_length, net_disp, directionality, angle_deg)
+
+# --- ggplot figure in your clean style ---
+p <- ggplot() +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  { if (!is.null(bg)) geom_point(data = bg, aes(x = PC1, y = PC2),
+                                 size = 1.4, color = "grey75") } +
+  geom_path(data = traj, aes(x = PC1, y = PC2), linewidth = 1.0, color = "black") +
+  geom_point(data = traj, aes(x = PC1, y = PC2), size = 1.6, color = "black") +
+  ggrepel::geom_text_repel(data = lab_df, aes(x = PC1, y = PC2, label = Year),
+                           size = 3, max.overlaps = Inf, box.padding = 0.3, point.padding = 0.3) +
+  labs(x = pc1_lab, y = pc2_lab, title = title_lab, subtitle = sub_lab) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line  = element_blank(),
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    axis.title = element_text(size = 10),
+    axis.text  = element_text(size = 9)
+  )
+
+p
+ggsave(filename = out_png, plot = p, width = 7.2, height = 4.8, dpi = 300)
+
+cat("Saved trajectory CSV:   ", out_csv_traj,  "\n")
+cat("Saved metrics CSV:      ", out_csv_stats, "\n")
+cat("Saved figure PNG:       ", out_png,       "\n")

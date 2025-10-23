@@ -1,5 +1,7 @@
 # Minimal PCA on "latest available per indicator per country" (no imputation)
 library(data.table)
+library(ggplot2) #for PCA
+library(ggrepel) # for PCA
 
 infile <- "qualityoflife_merged.csv"
 dt <- fread(infile)
@@ -7,7 +9,7 @@ dt <- fread(infile)
 id_country <- "Country"
 id_year    <- "Year"
 ind_cols   <- setdiff(names(dt), c(id_country, id_year))
-cutoff_year <- 2025  # use any earlier year if missing
+cutoff_year <- 2019  # use any earlier year if missing
 
 # ==== 1) Sort by country + year ascending ====
 setorderv(dt, cols = c(id_country, id_year), order = c(1, 1), na.last = TRUE)
@@ -66,10 +68,6 @@ loadings <- data.table(indicator = colnames(X),
 # text(loadings$PC1, loadings$PC2, labels = loadings$indicator, cex = 0.6, pos = 3)
 
 #alternatively in ggplot
-
-library(ggplot2)
-library(ggrepel)
-
 ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
@@ -109,7 +107,7 @@ ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
   labs(
     x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
     y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)"),
-    title = paste0("Countries in PC1–PC2 (", cutoff_year, ")")   # <── dynamic year
+    title = paste0("Characteristics in PC1–PC2 (", cutoff_year, ")")   # <── dynamic year
   ) +
   theme_minimal(base_size = 11) +
   theme(
@@ -123,11 +121,18 @@ ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
 
 
 # 7) Save minimal artifacts for later projection
-saveRDS(list(pca = p, variables = colnames(X), center = p$center, scale = p$scale),
-        "pca_model_latest.rds")
-fwrite(scores,   "pca_scores_latest_pc12.csv")
-fwrite(loadings, "pca_loadings_latest_pc12.csv")
 
+saveRDS(
+  list(
+    pca     = p,
+    variables = colnames(X),
+    center  = p$center,
+    scale   = p$scale
+  ),
+  file = sprintf("pca_model_%d.rds", cutoff_year)
+)
 
+fwrite(scores,   sprintf("pca_scores_%d_pc12.csv",   cutoff_year))
+fwrite(loadings, sprintf("pca_loadings_%d_pc12.csv", cutoff_year))
 
 
