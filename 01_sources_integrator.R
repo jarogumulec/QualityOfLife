@@ -8,20 +8,21 @@ wb    <- fread("qualityoflife_wide_WB.csv")
 iep   <- fread("qualityoflofe_wide_iep.csv")
 imf   <- fread("qualityoflife_wide_imf.csv")
 
+# manual: ignoruj první sloupec country_ID
 manual <- read_excel("qualityoflife_wide_manual.xlsx") |>
   select(-country_ID) |>
   as.data.table()
-# manual bez prvniho sloupce s id country
+
 sports <- fread("qualityoflife_wide_world_sports_rankings.csv")
 
 # --- Nové zdroje ---
-# Numbeo: vezmeme pouze první tři sloupce (explicitně jmény)
+# Numbeo: explicitně 3 sloupce
 numbeo <- fread(
   "2025_timedata/numbeo/houseprice_numbero_filtered_countries_fixed.csv",
   select = c("Year", "Country", "House_Price To Income Ratio")
 )
 
-# World Bank – Press Freedom Index Rank (už je long se 3 sloupci)
+# World Bank – Press Freedom Index Rank (long, 3 sloupce)
 pfi <- fread("2025_timedata/worldbank_360/RWB_PFI_Rank_long_filtered.csv")
 
 # ==== Základní hygiena: typy a hlavičky ====
@@ -52,23 +53,8 @@ merged <- Reduce(function(x, y) full_join(x, y, by = c("Country","Year")),
 merged_dt <- as.data.table(merged)
 setorder(merged_dt, Country, Year)
 
-# ==== Přenesení JEDNORÁZOVÝCH hodnot (pouze tam, kde je v dané zemi přesně 1 hodnota) od r. 1995 ====
-value_cols <- setdiff(names(merged_dt), c("Country","Year"))
-
-part_pre95 <- merged_dt[Year < 1995]
-part_95p   <- merged_dt[Year >= 1995]
-
-part_95p[, (value_cols) := lapply(.SD, function(v) {
-  nn <- sum(!is.na(v))
-  if (nn == 1L) {
-    rep(v[which(!is.na(v))[1]], .N)
-  } else {
-    v
-  }
-}), by = Country, .SDcols = value_cols]
-
-merged_out <- rbindlist(list(part_pre95, part_95p), use.names = TRUE, fill = TRUE)
-setorder(merged_out, Country, Year)
+# ==== Bez jakéhokoli kopírování hodnot ====
+merged_out <- merged_dt
 
 # ==== Volitelná hygiena typů: převést integer metriky na numeric (vyjma Year) ====
 metric_cols <- setdiff(names(merged_out), c("Country","Year"))

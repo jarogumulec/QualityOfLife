@@ -19,16 +19,26 @@ cutoff_year <- 2024  # use any earlier year if missing
 # ==== 1) Sort by country + year ascending ====
 setorderv(dt, cols = c(id_country, id_year), order = c(1, 1), na.last = TRUE)
 
-# ==== 2) For each country, take the last non-NA value ≤ cutoff_year ====
-fixedyear <- dt[get(id_year) <= cutoff_year,
-                lapply(.SD, function(v) {
-                  idx <- which(!is.na(v))
-                  if (length(idx)) v[tail(idx, 1L)] else NA_real_
-                }),
+# ==== 2) For each country, take the last non-NA value ≤ cutoff_year,
+#         else (fallback) take the last non-NA value overall ====
+# timpadem nebere 
+fixedyear <- dt[,
+                {
+                  yr <- get(id_year)
+                  out <- lapply(.SD, function(v) {
+                    idx_le <- which(!is.na(v) & yr <= cutoff_year)
+                    if (length(idx_le)) {
+                      v[tail(idx_le, 1L)]
+                    } else {
+                      idx_all <- which(!is.na(v))
+                      if (length(idx_all)) v[tail(idx_all, 1L)] else NA_real_
+                    }
+                  })
+                  as.data.table(out)
+                },
                 by = c(id_country),
                 .SDcols = ind_cols
 ]
-
 
 # nahrada prumerem
 
@@ -135,10 +145,10 @@ saveRDS(
     center  = p$center,
     scale   = p$scale
   ),
-  file = sprintf("pca_model_%d.rds", cutoff_year)
+  file = sprintf("PCAmodel/pca_model_%d.rds", cutoff_year)
 )
 
-fwrite(scores,   sprintf("pca_scores_%d_pc12.csv",   cutoff_year))
-fwrite(loadings, sprintf("pca_loadings_%d_pc12.csv", cutoff_year))
+fwrite(scores,   sprintf("PCAmodel/pca_scores_%d_pc12.csv",   cutoff_year))
+fwrite(loadings, sprintf("PCAmodel/pca_loadings_%d_pc12.csv", cutoff_year))
 
 
