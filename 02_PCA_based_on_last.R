@@ -1,27 +1,67 @@
-# Minimal PCA on "latest available per indicator per country" (no imputation)
+# ==== Packages ====
 library(data.table)
-library(ggplot2) #for PCA
-library(ggrepel) # for PCA
+library(ggplot2)
+library(ggrepel)
 
+# ==== Parametry ====
 infile <- "qualityoflife_merged.csv"
+cutoff_year <- 2025
+
+# (a) země k vyloučení (ponechte character(0) pro žádný filtr)
+exclude_countries <- c("China", "Japan", "Turkiye") #, "China"
+# exclude_countries <- character(0) # kdyz chci vyloucit
+
+# (b) indikátory k vyloučení:
+#    - přesný název sloupce (exact match)
+exclude_indicators_exact <- character(0)
+#    - substring/regex (case-insensitive), např. "Protected area"
+exclude_indicators_like  <- c("Relig_Buddhists", "GINI Index", "Forrest area", "Socal contributions")
+# exclude_indicators_like  <- character(0)
+
+# ==== Načtení ====
 dt <- fread(infile)
 
-numcols <- setdiff(names(dt), c("Country", "Year"))
-dt[, (numcols) := lapply(.SD, as.numeric), .SDcols = numcols]
+# ---- Filtrace (a): země ----
+if (length(exclude_countries) > 0) {
+  dt <- dt[!(Country %in% exclude_countries)]
+}
 
-
-
+# ---- Filtrace (b): indikátory (sloupce) ----
+# chránit identifikátory
 id_country <- "Country"
 id_year    <- "Year"
-ind_cols   <- setdiff(names(dt), c(id_country, id_year))
-cutoff_year <- 2024  # use any earlier year if missing
+
+all_cols <- names(dt)
+id_cols  <- c(id_country, id_year)
+
+# přesná jména k dropu
+drop_exact <- setdiff(intersect(all_cols, exclude_indicators_exact), id_cols)
+
+# substring/regex k dropu (case-insensitive)
+drop_like <- character(0)
+if (length(exclude_indicators_like) > 0) {
+  like_matches <- unique(unlist(
+    lapply(exclude_indicators_like, function(pat)
+      grep(pat, all_cols, ignore.case = TRUE, value = TRUE))
+  ))
+  drop_like <- setdiff(like_matches, id_cols)
+}
+
+drop_cols <- unique(c(drop_exact, drop_like))
+if (length(drop_cols) > 0) {
+  dt[, (drop_cols) := NULL]
+}
+
+# ---- Numerické sloupce na numeric ----
+numcols <- setdiff(names(dt), c(id_country, id_year))
+dt[, (numcols) := lapply(.SD, as.numeric), .SDcols = numcols]
 
 # ==== 1) Sort by country + year ascending ====
 setorderv(dt, cols = c(id_country, id_year), order = c(1, 1), na.last = TRUE)
 
-# ==== 2) For each country, take the last non-NA value ≤ cutoff_year,
-#         else (fallback) take the last non-NA value overall ====
-# timpadem nebere 
+# ==== 2) Latest ≤ cutoff_year; fallback na poslední dostupnou hodnotu ====
+ind_cols <- setdiff(names(dt), c(id_country, id_year))
+
 fixedyear <- dt[,
                 {
                   yr <- get(id_year)
@@ -40,115 +80,77 @@ fixedyear <- dt[,
                 .SDcols = ind_cols
 ]
 
-# nahrada prumerem
-
-# tohle nedelam rad, ale musim nahradit prumerem par blbosti. 
-#slovensko napriklad nema social .... 
-# replace any remaining NAs by column mean (ignoring NA)
+# ==== 3) (Volitelně) imputace průměrem pro zbývající NA ====
 for (col in ind_cols) {
   mean_val <- mean(fixedyear[[col]], na.rm = TRUE)
-  fixedyear[is.na(get(col)), (col) := mean_val]
+  if (is.finite(mean_val)) {
+    fixedyear[is.na(get(col)), (col) := mean_val]
+  }
 }
 
-
-
-# 3) Keep only countries with complete rows (no imputation)
+# ==== 4) PCA (centered & scaled) ====
 mask_complete <- complete.cases(fixedyear[, ..ind_cols])
 X <- as.matrix(fixedyear[mask_complete, ..ind_cols])
 cnames <- fixedyear[[id_country]][mask_complete]
 
-# 4) PCA (centered & scaled)
 p <- prcomp(X, center = TRUE, scale. = TRUE)
 
-# 5) Scores (countries) and loadings (indicators), PC1–PC2
+# ==== 5) Scores & loadings ====
 scores <- data.table(`Country Name` = cnames,
                      PC1 = p$x[,1], PC2 = p$x[,2])
 
 loadings <- data.table(indicator = colnames(X),
                        PC1 = p$rotation[,1], PC2 = p$rotation[,2])
 
-# 6) Plots
-
-# #oldschool but text overlapping
-# plot(scores$PC1, scores$PC2,
-#      xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
-#      ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
-#      main = "Countries in PC1–PC2 (2025*)", pch = 19, cex = 0.6)
-# text(scores$PC1, scores$PC2, labels = scores$`Country Name`, cex = 0.6, pos = 3)
-# 
-# plot(loadings$PC1, loadings$PC2,
-#      xlab = paste0("PC1 (", round(100*summary(p)$importance[2,1],1), "%)"),
-#      ylab = paste0("PC2 (", round(100*summary(p)$importance[2,2],1), "%)"),
-#      main = "Loadings in PC1–PC2 (2025*)", pch = 19, cex = 0.6)
-# text(loadings$PC1, loadings$PC2, labels = loadings$indicator, cex = 0.6, pos = 3)
-
-#alternatively in ggplot
+# ==== 6) Plots ====
 ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
   geom_point(size = 1.6, color = "gray25") +
-  geom_text_repel(
-    size = 3,
-    max.overlaps = Inf,
-    box.padding = 0.5,
-    point.padding = 0.3
-  ) +
+  geom_text_repel(size = 3, max.overlaps = Inf, box.padding = 0.5, point.padding = 0.3) +
   labs(
     x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
     y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)"),
-    title = paste0("Countries in PC1–PC2 (", cutoff_year, ")")   # <── dynamic year
+    title = paste0("Countries in PC1–PC2 (", cutoff_year, ")")
   ) +
   theme_minimal(base_size = 11) +
   theme(
-    panel.grid = element_blank(),     # remove gray grid
-    axis.line = element_blank(),      # remove ggplot’s own axis lines
+    panel.grid = element_blank(),
+    axis.line = element_blank(),
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 9)
   )
-
-#loadings plotting
-
 
 ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
   geom_point(size = 1.8, color = "gray25") +
-  geom_text_repel(
-    size = 3,
-    max.overlaps = Inf,
-    box.padding = 0.5,
-    point.padding = 0.3
-  ) +
+  geom_text_repel(size = 3, max.overlaps = Inf, box.padding = 0.5, point.padding = 0.3) +
   labs(
     x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
     y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)"),
-    title = paste0("Characteristics in PC1–PC2 (", cutoff_year, ")")   # <── dynamic year
+    title = paste0("Characteristics in PC1–PC2 (", cutoff_year, ")")
   ) +
   theme_minimal(base_size = 11) +
   theme(
-    panel.grid = element_blank(),     # removes background grid
-    axis.line = element_blank(),      # remove default axis lines
+    panel.grid = element_blank(),
+    axis.line = element_blank(),
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 9)
   )
 
-
-
-# 7) Save minimal artifacts for later projection
-
+# ==== 7) Export artefaktů ====
 saveRDS(
   list(
-    pca     = p,
+    pca       = p,
     variables = colnames(X),
-    center  = p$center,
-    scale   = p$scale
+    center    = p$center,
+    scale     = p$scale
   ),
   file = sprintf("PCAmodel/pca_model_%d.rds", cutoff_year)
 )
 
 fwrite(scores,   sprintf("PCAmodel/pca_scores_%d_pc12.csv",   cutoff_year))
 fwrite(loadings, sprintf("PCAmodel/pca_loadings_%d_pc12.csv", cutoff_year))
-
-
