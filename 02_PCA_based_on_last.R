@@ -99,6 +99,7 @@ ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
 
 #loadings plotting
 
+
 ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
