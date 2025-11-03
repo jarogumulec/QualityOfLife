@@ -5,7 +5,7 @@ library(ggplot2)
 library(ggrepel)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Czechia"     # e.g. "Czechia", "Slovak Republic"
+country_to_plot <- "Russian Federation"     # e.g. "Czechia", "Slovak Republic"
 years_win       <- 1995:2025
 ref_year        <- 2025  # PCAs created to 2024 only. most data absent for 25
 

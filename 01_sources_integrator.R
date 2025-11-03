@@ -25,6 +25,12 @@ numbeo <- fread(
 # World Bank – Press Freedom Index Rank (long, 3 sloupce)
 pfi <- fread("2025_timedata/worldbank_360/RWB_PFI_Rank_long_filtered.csv")
 
+# IMF – Social benefits (ponecháme názvy sloupců z CSV)
+imf_ges <- fread("2025_timedata/worldbank_360/IMF_GES_GeneralGov_pctGDP_filtered.csv")
+# Ověření minimální struktury
+stopifnot(all(c("Country", "Year") %in% names(imf_ges)))
+# Pokud by soubor měl víc datových sloupců, zapojí se všechny (mimo Country/Year)
+
 # ==== Základní hygiena: typy a hlavičky ====
 req <- c("Country","Year")
 stopifnot(all(req %in% names(wb)),
@@ -36,18 +42,19 @@ stopifnot(all(req %in% names(wb)),
           all(req %in% names(pfi)))
 
 # sjednotit typ roku na integer
-for (x in list(wb, iep, imf, manual, sports, numbeo, pfi)) x$Year <- as.integer(x$Year)
-wb$Year     <- as.integer(wb$Year)
-iep$Year    <- as.integer(iep$Year)
-imf$Year    <- as.integer(imf$Year)
-manual$Year <- as.integer(manual$Year)
-sports$Year <- as.integer(sports$Year)
-numbeo$Year <- as.integer(numbeo$Year)
-pfi$Year    <- as.integer(pfi$Year)
+for (x in list(wb, iep, imf, manual, sports, numbeo, pfi, imf_ges)) x$Year <- as.integer(x$Year)
+wb$Year      <- as.integer(wb$Year)
+iep$Year     <- as.integer(iep$Year)
+imf$Year     <- as.integer(imf$Year)
+manual$Year  <- as.integer(manual$Year)
+sports$Year  <- as.integer(sports$Year)
+numbeo$Year  <- as.integer(numbeo$Year)
+pfi$Year     <- as.integer(pfi$Year)
+imf_ges$Year <- as.integer(imf_ges$Year)
 
 # ==== Sloučení všech zdrojů ====
 merged <- Reduce(function(x, y) full_join(x, y, by = c("Country","Year")),
-                 list(wb, iep, imf, manual, sports, numbeo, pfi)) %>%
+                 list(wb, iep, imf, manual, sports, numbeo, pfi, imf_ges)) %>%
   arrange(Country, Year)
 
 merged_dt <- as.data.table(merged)

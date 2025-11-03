@@ -15,8 +15,9 @@ exclude_countries <- c("China", "Japan", "Turkiye") #, "China"
 #    - přesný název sloupce (exact match)
 exclude_indicators_exact <- character(0)
 #    - substring/regex (case-insensitive), např. "Protected area"
-exclude_indicators_like  <- c("Relig_Buddhists", "GINI Index", "Forrest area", "Socal contributions")
-# exclude_indicators_like  <- character(0)
+#exclude_indicators_like  <- c("Relig_Buddhists", "GINI Index", "Forrest area", "Socal contributions")
+exclude_indicators_like  <- c("Relig_Buddhists", "LGBT Public Opinion Index", "LGBT Legal index")
+# exclude_indicators_like  <- character(0) #kdyz nic
 
 # ==== Načtení ====
 dt <- fread(infile)
