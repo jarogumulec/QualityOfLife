@@ -10,7 +10,7 @@ years_win       <- 1995:2025
 ref_year        <- 2025  # PCAs created to 2024 only. most data absent for 25
 
 infile_data <- "qualityoflife_merged.csv"
-pca_dir     <- "PCAmodel"
+pca_dir     <- "PCAmodel" 
 out_dir     <- "trajectory"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
