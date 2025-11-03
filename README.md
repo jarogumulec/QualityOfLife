@@ -1,37 +1,171 @@
-# QualityOfLife
+# Global Quality-of-Life Indicators – PCA Analysis Pipeline
 
-## Todo
-* [ ] replace wikipedia sources with primary sources
-* [ ] add countries all europe, Canada,..
-* [ ] deal with "more is better" issue.  Should present as 1/x?  
+This repository implements a **multi-source data integration and PCA-based analysis** of global quality-of-life indicators, combining economic, social, and governance metrics from the **World Bank**, **IMF**, **IEP (Institute for Economics & Peace)**, **Numbeo**, and **World Sports Rankings** datasets.  
+The goal is to quantify and visualize how countries differ and evolve across time in a common multidimensional space.
 
+---
 
-## Sources of data
+## 📁 Project Structure and Scripts
 
-* Debt/GDP: 
-* Cena bydlení: data https://www.statista.com/statistics/722905/average-residential-square-meter-prices-in-eu-28-per-country/
-* Mzda https://en.wikipedia.org/wiki/List_of_European_countries_by_average_wage Čína někde internet
-* Quality of life index https://www.numbeo.com/quality-of-life/rankings_by_country.jsp - quality of life index 2021 - (více je lépe)
-* Science https://www.scimagojr.com/countryrank.php - Citations per item (více je lépe) - (estonia the one nature science)
-* Protected areas https://www.indexmundi.com/facts/indicators/ER.LND.PTLD.ZS/rankings: *primary assessmant indicate its relativelly irrelevant*
-* Amount in forrests% https://en.wikipedia.org/wiki/List_of_countries_by_forest_area
-* Forrest/land area https://data.worldbank.org/indicator/AG.LND.FRST.ZS
-* Corruption https://www.transparency.org/en/cpi/2020/index/nzl Corruption index 2020 rank (méně je lépe) -OPRINV
-* Healthcare https://www.numbeo.com/health-care/rankings_by_country.jsp healthcare index (více je lépe)
-* Soc welfare https://en.wikipedia.org/wiki/List_of_countries_by_social_welfare_spending
-* Gobal_peace https://en.wikipedia.org/wiki/Global_Peace_Index (méně je lepší) _OPRINV
-* Extremismus
-*  Tolerance k LGBT https://en.wikipedia.org/wiki/Gay-friendly - Gay Friendly total (více je lépe)
-* Konzumace alkoholu https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita
-* export do číny nebo vztah k číně
-* Odolnost k fake news https://edition.cnn.com/interactive/2019/05/europe/finland-fake-news-intl/ (více je lépe)
-* VŠ vzdělání https://en.wikipedia.org/wiki/List_of_countries_by_tertiary_education_attainment (%) více je více (2019 OECD)
-* Cestování, nalínáno per capita
-* Population density https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density (pop/km2)
-* Cenzura https://en.wikipedia.org/wiki/Censorship_by_country  FH free press report (méně je lépe)
+### 00_data_preprocessor_*.R / *.py  
+These are **data acquisition and preprocessing scripts** for individual data sources.  
+Each produces harmonized CSVs with the same structure:
+`Country`, `Year`, and one or more indicator columns.  
+All country names are normalized to **World Bank naming conventions**.
 
-## Notes/interpretation
-A stran GDP per capita je před Itálií na úrovni velké británie!
-Debt/GDP:
-Data za 2020 (odhad) za 2018 32% (jako jiné země),   (tím výrazně v dolních percentilech). ; 2050 miliard CZK = 96 miliard usd 2021 (79miliard usd 2018), 
-GDP 2020 cca 246 miliard USD, tj 2020 je poměr 96/246= 39% (tedy o něco víc, ale pořád výrazně méně než Německo ….. GDP per capita 
+| Script | Purpose / Source |
+|--------|------------------|
+| `00_data_preprocessor_IEP.R` | Loads and reshapes IEP (Institute for Economics & Peace) indicators such as Global Peace Index and Positive Peace Index. |
+| `00_data_preprocessor_IMF.R` | Processes IMF indicators such as debt, GDP ratios, and government finance statistics. |
+| `00_data_preprocessor_social_benefits_worldbank360.py` | Extracts *Social Benefits (% of GDP)* from World Bank 360 datasets. |
+| `00_data_preprocessor_WB.R` | Loads World Bank indicators listed in `2025_timedata/worldbank/` according to mapping defined in `qualityoflife_country_compare_2021.xlsx`. |
+| `00_data_processor_numbeo_houseprice.py` | Fetches and processes **Numbeo House Price to Income Ratio** data. |
+| `00_data_processor_press_freedom_worldbank360.py` | Extracts the *Press Freedom Index Rank* from World Bank 360 data. |
+| `00-Worldsportrankings - scraper.R` | Scrapes *World Sports Ranking* dataset and converts it to a comparable format (`Country`, `Year`, `Points`). |
+
+---
+
+### 01_sources_integrator.R  
+Integrates all harmonized sources above into a **single unified table**
+```
+qualityoflife_merged.csv
+```
+with columns:
+`Country`, `Year`, and all numeric indicators.  
+This is the master dataset for downstream analysis.
+
+---
+
+### 02_PCA_based_on_last.R  
+Performs **Principal Component Analysis (PCA)** using the *latest available* values for each indicator and each country (≤ selected cutoff year).  
+- Allows manual filtering of countries and indicators.  
+- Missing values are replaced by **column means**.  
+- Saves PCA model (rotation, center, scale) and scores to:
+  - `PCAmodel/pca_model_<year>.rds`  
+  - `PCAmodel/pca_scores_<year>_pc12.csv`  
+  - `PCAmodel/pca_loadings_<year>_pc12.csv`
+
+---
+
+### 03_time_progression_in_existing_space.R  
+Projects each country’s **temporal trajectory** (1995–2025) into the PCA space created by the previous script.  
+The script:
+- Uses **LOCF + NOCB** (Last Observation Carried Forward + Next Observation Carried Backward) to fill missing years,  
+- Computes path metrics:  
+  - total path length (sum of yearly displacements),  
+  - net displacement (start → end),  
+  - directionality (net / total path),  
+  - angle (direction in PC1–PC2 space),  
+- Outputs trajectory CSV and plot in the `trajectory/` folder.
+
+---
+
+### 04_PCA_stability_analysis_over_time.R  
+Older diagnostic script testing **loading stability** of each indicator across years and their contribution to PC1 and PC2.  
+Partly replaced by the new optimized PCA approach.
+
+---
+
+### 05_PCA_optimalisation_select_strong_only.R  
+The **optimized PCA selector** – a more advanced alternative to 02_PCA.  
+It automatically selects a *non-redundant, high-variance subset* of indicators.  
+Main adjustable parameters:
+- `max_na_ratio` – allowed fraction of missing values (0.5 = keep columns with ≤50% NA).  
+  → Use `1.0` to keep everything.  
+- `corr_threshold` – correlation cutoff (0.97 typical).  
+  → Higher = keep more correlated variables.  
+- `min_features` / `max_features` – range of selected indicators.  
+
+**Example:**  
+```r
+max_na_ratio <- 0.7
+corr_threshold <- 0.98
+min_features <- 10
+max_features <- 25
+```
+Outputs are saved into:
+- `PCAmodel_opt_simple/pca_model_opt_simple_<year>.rds`
+- corresponding `pca_scores` / `pca_loadings` CSVs and PNGs.
+
+---
+
+### 06_timetravel_on_optimized_PCA_params.R  
+Equivalent to `03_time_progression_in_existing_space.R` but works with the **optimized PCA** model (script 05).  
+Automatically reconstructs centering and scaling if not stored in the RDS.  
+Generates the same trajectory metrics and figure in `trajectory/`.
+
+---
+
+### Folders Overview
+
+| Folder | Contents |
+|---------|-----------|
+| `PCAmodel/` | PCA models and scores generated by `02_PCA_based_on_last.R`. |
+| `PCAmodel_opt_simple/` | Models from optimized PCA (script 05). |
+| `PCAoutput/` | Graphical PCA results and biplots. |
+| `trajectory/` | Temporal trajectories of countries (PC1–PC2 paths, metrics, plots). |
+| `2025_timedata/` | Raw or preprocessed source datasets by domain (World Bank, IMF, IEP, Numbeo, etc.). |
+
+---
+
+## 🌍 Data Sources
+
+| Indicator | Unit | Source | URL |
+|------------|------|---------|-----|
+| GDP per capita | USD, current int PPP | worldbank | https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD |
+| Control of Corruption | percentile rank | worldbank | https://data.worldbank.org/indicator/CC.PER.RNK?year=2021 |
+| Life expectancy | years | worldbank | c |
+| Research and development expenditure | % of GDP | worldbank | https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS |
+| High-technology exports | % | worldbank | https://data.worldbank.org/indicator/TX.VAL.TECH.MF.ZS?name_desc=false |
+| Bachelor education | % | worldbank | https://data.worldbank.org/indicator/SE.TER.CUAT.BA.ZS |
+| Alcohol consumption | liter per year | worldbank | https://data.worldbank.org/indicator/SH.ALC.PCAP.LI?name_desc=false&view=map |
+| Debt to GDP | % | IMF | https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/OEMDC/ADVEC/WEOWORLD |
+| Population density | people per sq. km of land area | worldbank | https://data.worldbank.org/indicator/EN.POP.DNST |
+| Unemployment | % | worldbank | https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS |
+| Social spending GDP | % | ourworldindata | https://ourworldindata.org/grapher/social-spending-oecd-longrun?tab=table |
+| Socal contributions | % | worldbank | https://data.worldbank.org/indicator/GC.REV.SOCL.ZS |
+| Military expenditure | % | worldbank | https://data.worldbank.org/indicator/MS.MIL.XPND.ZS?view=map |
+| Infrastructure quality | index | worldbank | https://data.worldbank.org/indicator/LP.LPI.INFR.XQ?most_recent_value_desc=true&view=map |
+| Forrest area | % | worldbank | https://data.worldbank.org/indicator/AG.LND.FRST.ZS?most_recent_value_desc=true&view=map |
+| Protected area | % | worldbank | https://data.worldbank.org/indicator/ER.LND.PTLD.ZS?most_recent_value_desc=true&view=map |
+| GINI Index | % | worldbank | https://data.worldbank.org/indicator/SI.POV.GINI |
+| Global Peace Index | score | IEP | https://www.economicsandpeace.org/wp-content/uploads/2025/08/GPI_public_release_2025.xlsx |
+| Global Terrorism Index | score | IEP | https://www.economicsandpeace.org/wp-content/uploads/2025/08/GTI_PublicReleaseData_2025.xlsx |
+| Positive Peace Index | score | IEP | https://www.economicsandpeace.org/wp-content/uploads/2025/08/PPI-Public-Release-Data-2023.xlsx |
+| Ecological Threat Report | score | IEP | https://www.economicsandpeace.org/wp-content/uploads/2025/08/ETR-2024-Public-Release-Data.xlsx |
+| Female in management | % | worldbank | https://data.worldbank.org/indicator/SL.EMP.SMGT.FE.ZS?most_recent_value_desc=true |
+| Female in parliament | % | worldbank | https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?most_recent_year_desc=false |
+| Renewable energy consumption | % | worldbank | https://data.worldbank.org/indicator/EG.FEC.RNEW.ZS |
+| Employment in agriculture | % | worldbank | https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS |
+| Employment in services | % | worldbank | https://data.worldbank.org/indicator/SL.SRV.EMPL.ZS |
+| Urban population | % | worldbank | https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS |
+| Rural population | % | worldbank | https://data.worldbank.org/indicator/SP.RUR.TOTL.ZS |
+| Air polution | ug/m2 | worldbank | https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3 |
+| Traffic mortality | 1/100k | worldbank | https://data.worldbank.org/indicator/SH.STA.TRAF.P5 |
+| Housing in own property | % | OECD | https://www.oecd.org/en/publications/2024/06/society-at-a-glance-2024_08001b73/full-report/affordable-housing_1a2ec30f.html#indicator-d1e11728-0ee0a256aa |
+| LGBT Equality index | nan | equaldex | https://www.equaldex.com/equality-index-api |
+| LGBT Legal index | index | equaldex | https://www.equaldex.com/equality-index-api |
+| LGBT Public Opinion index | index | equaldex | https://www.equaldex.com/equality-index-api |
+| Money From Abroad | % | worldbank | https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?view=map |
+| Export | % | worldbank | https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS?view=map&year=2024 |
+| Fertility | rate | worldbank | https://data.worldbank.org/indicator/SP.DYN.TFRT.IN?most_recent_value_desc=false&view=map&year=2024 |
+| Press freedom | rank | worldbank_360 | https://data360.worldbank.org/en/dataset/RWB_PFI |
+| Thrust in Government | % | nan | https://www.oecd.org/en/publications/oecd-survey-on-drivers-of-trust-in-public-institutions-2024-results_9a20554b-en.html |
+| Religion | % | PEW | https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/ |
+| Car age | nan | EUROSTAT | https://ec.europa.eu/eurostat/databrowser/product/page/road_eqs_carage |
+| House price | ratio | Numbeo | https://www.numbeo.com/property-investment/rankings_by_country.jsp?title=2011 |
+| Social benefits expense | % | worldbank_360 | https://data360.worldbank.org/en/indicator/IMF_GFSE_GES_G14?view=trend |
+
+---
+
+## 🧩 Summary
+
+This repository builds a **cross-domain composite index** using PCA to:
+- Integrate economic, social, and institutional indicators from multiple public datasets,
+- Explore **country differentiation** and **temporal dynamics** in a unified space,
+- Support reproducible, script-based analyses in R and Python.
+
+---
+
+📄 **Download this README:**  
+[👉 Download README.md](./README.md)
