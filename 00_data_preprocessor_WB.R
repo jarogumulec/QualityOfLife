@@ -4,7 +4,7 @@ library(dplyr)
 library(tidyr)
 
 # ==== Paths ====
-meta_xlsx    <- "qualityoflife_country_compare_2021.xlsx"
+meta_xlsx    <- "qualityoflife_sourcedesc.xlsx"
 worldbank_dir <- "2025_timedata/worldbank"
 
 # ==== 1) Load metadata and countries ====
