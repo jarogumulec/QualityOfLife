@@ -17,11 +17,11 @@ All country names are normalized to **World Bank naming conventions**.
 |--------|------------------|
 | `00_data_preprocessor_IEP.R` | Loads and reshapes IEP (Institute for Economics & Peace) indicators such as Global Peace Index and Positive Peace Index. |
 | `00_data_preprocessor_IMF.R` | Processes IMF indicators such as debt, GDP ratios, and government finance statistics. |
-| `00_data_preprocessor_social_benefits_worldbank360.py` | Extracts *Social Benefits (% of GDP)* from World Bank 360 datasets. |
-| `00_data_preprocessor_WB.R` | Loads World Bank indicators listed in `2025_timedata/worldbank/` according to mapping defined in `qualityoflife_sourcedesc.xlsx` in `2025datadesc` and `countries` lists . Countries list selects only those wanted. |
-| `00_data_processor_numbeo_houseprice.py` | Fetches and processes **Numbeo House Price to Income Ratio** data. |
-| `00_data_processor_press_freedom_worldbank360.py` | Extracts the *Press Freedom Index Rank* from World Bank 360 data. |
-| `00-Worldsportrankings - scraper.R` | Scrapes *World Sports Ranking* dataset and converts it to a comparable format (`Country`, `Year`, `Points`). |
+| `00_data_preprocessor_worldbank360_social_benefits.py` | Extracts *Social Benefits (% of GDP)* from World Bank 360 datasets. |
+| `00_data_prepreprocessor_WB.R` | Loads World Bank indicators listed in `2025_timedata/worldbank/` according to mapping defined in `qualityoflife_sourcedesc.xlsx` in `2025datadesc` and `countries` lists . Countries list selects only those wanted. |
+| `00_data_preprocessor_numbeo_houseprice.py` | Fetches and processes **Numbeo House Price to Income Ratio** data. |
+| `00_data_preprocessor_worldbank360_press_freedom.py` | Extracts the *Press Freedom Index Rank* from World Bank 360 data. |
+| `00_data_preprocessor_scraper_Worldsportrankings.R` | Scrapes *World Sports Ranking* dataset and converts it to a comparable format (`Country`, `Year`, `Points`). |
 
 ---
 
