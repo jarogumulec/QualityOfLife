@@ -155,3 +155,7 @@ saveRDS(
 
 fwrite(scores,   sprintf("PCAmodel/pca_scores_%d_pc12.csv",   cutoff_year))
 fwrite(loadings, sprintf("PCAmodel/pca_loadings_%d_pc12.csv", cutoff_year))
+
+# ==== Export the PCA input matrix (countries × indicators) ====
+fixedyear_out <- fixedyear[, c(id_country, ind_cols), with = FALSE]
+fwrite(fixedyear_out, "fixedyear_latest.csv")

@@ -20,3 +20,8 @@ qualityoflife_wide_world_sports_rankings.csv
 PCAmodel_opt_simple
 .Rhistory
 .RData  
+fixedyear_latest.csv
+.gitignore
+heatmap.png
+heatmap_corr.png
+.gitignore
