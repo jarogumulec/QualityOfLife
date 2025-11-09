@@ -1,32 +1,45 @@
-# 05_indicator_ranking_percentile.R
-# Seřazený graf (low→high) pro zadaný indikátor; zvýrazní Czechia + percentil
+# 05_indicator_ranking_from_merged.R
+# Ranking (low→high) pro zadaný indikátor z qualityoflife_merged.csv (poslední≤cutoff)
 
 library(data.table)
 library(ggplot2)
 
 # ---- Parametry ----
-infile  <- "fixedyear_latest.csv"   # široká tabulka: Country + indikátory
-param   <- "House_Price To Income Ratio"            # << název sloupce/indikátoru
+infile      <- "qualityoflife_merged.csv"
+id_country  <- "Country"
+id_year     <- "Year"
+cutoff_year <- 2025
+param       <- "House_Price To Income Ratio"  # název sloupce/indikátoru
+cz_name     <- "Czechia"
 
-# House_Price To Income Ratio "debt_to_GDP" 
-cz_name <- "Czechia"                # název státu v datech
-
-# ---- Načtení a příprava ----
+# ---- Načtení ----
 dt <- fread(infile)
-stopifnot("Country" %in% names(dt))
+stopifnot(all(c(id_country, id_year) %in% names(dt)))
 if (!param %in% names(dt)) stop(sprintf("Sloupec '%s' nebyl nalezen.", param))
+dt[, (param) := as.numeric(get(param))]
 
-df <- dt[, .(Country, value = as.numeric(get(param)))]
+# ---- Poslední hodnota ≤ cutoff_year (fallback) pouze pro vybraný indikátor ----
+setorderv(dt, c(id_country, id_year), c(1, 1))
+df <- dt[,
+         {
+           yr <- get(id_year); v <- get(param)
+           idx_le <- which(!is.na(v) & yr <= cutoff_year)
+           val <- if (length(idx_le)) v[tail(idx_le, 1L)] else {
+             idx_all <- which(!is.na(v)); if (length(idx_all)) v[tail(idx_all, 1L)] else NA_real_
+           }
+           .(value = val)
+         },
+         by = c(id_country)
+]
+setnames(df, id_country, "Country")
+
+# ---- Drop NA a spočti percentil ----
 df <- df[is.finite(value)]
-
-# Percentil: PERCENTRANK = 100*(rank-1)/(N-1), průměrné pořadí při shodách
-N <- nrow(df)
-df[, rnk := frank(value, ties.method = "average")]                # 1 = nejnižší
-df[, percentil := if (N > 1) 100 * (rnk - 1) / (N - 1) else 100 ] # 0..100
-
-# Řazení low→high a flag pro Czechia
+N  <- nrow(df)
+df[, rnk := frank(value, ties.method = "average")]                 # 1 = nejnižší
+df[, percentil := if (N > 1) 100 * (rnk - 1) / (N - 1) else 100 ]  # 0..100
 df[, Country := factor(Country, levels = df[order(value), Country])]
-df[, is_cz := Country == cz_name]
+df[, is_cz := as.character(Country) == cz_name]
 
 # ---- Graf (lollipop) ----
 p <- ggplot(df[order(value)], aes(x = value, y = Country)) +
@@ -35,18 +48,16 @@ p <- ggplot(df[order(value)], aes(x = value, y = Country)) +
   geom_point(aes(color = is_cz), size = 2.4) +
   scale_color_manual(values = c(`TRUE` = "firebrick", `FALSE` = "grey30"), guide = "none") +
   labs(
-    title = sprintf("%s — seřazeno low→high", param),
+    title = sprintf("%s — seřazeno low→high (latest≤%d)", param, cutoff_year),
     x = param, y = NULL
   ) +
   theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor = element_blank()
-  )
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor    = element_blank())
 
-# popisek pro Czechia s percentilem
-if (cz_name %in% df$Country) {
-  cz <- df[Country == cz_name]
+# popisek pro Czechia s percentilem (pokud je v datech)
+if (cz_name %in% levels(df$Country)) {
+  cz <- df[as.character(Country) == cz_name]
   p <- p +
     geom_text(
       data = cz,

@@ -1,50 +1,89 @@
-# 04_simple_heatmaps.R
-# Simple clustered correlation and data heatmaps using pheatmap
+# 04_heatmaps_from_merged.R
+# Clustered correlation + data heatmap z qualityoflife_merged.csv (poslední rok per země×indikátor)
 
 library(data.table)
 library(pheatmap)
 
-# ==== Load ====
-dt <- fread("fixedyear_latest.csv")
-id_country <- "Country"
-ind_cols <- setdiff(names(dt), id_country)
+# ==== Parametry ====
+infile      <- "qualityoflife_merged.csv"
+id_country  <- "Country"
+id_year     <- "Year"
+cutoff_year <- 2025   # poslední akceptovaný rok (vezme ≤ cutoff, jinak fallback na úplně poslední)
 
-X <- as.matrix(dt[, ..ind_cols])
-rownames(X) <- dt[[id_country]]
+# ==== Načtení ====
+dt <- fread(infile)
+stopifnot(all(c(id_country, id_year) %in% names(dt)))
+# přetypování numerických sloupců
+ind_cols <- setdiff(names(dt), c(id_country, id_year))
+dt[, (ind_cols) := lapply(.SD, function(z) suppressWarnings(as.numeric(z))), .SDcols = ind_cols]
 
-# ==== 1) Correlation heatmap ====
+# ==== Poslední hodnota ≤ cutoff_year (fallback na úplně poslední) pro KAŽDÝ indikátor ====
+setorderv(dt, c(id_country, id_year), c(1, 1))
+fixedyear <- dt[,
+                {
+                  yr <- get(id_year)
+                  out <- lapply(.SD, function(v) {
+                    idx_le  <- which(!is.na(v) & yr <= cutoff_year)
+                    if (length(idx_le)) v[tail(idx_le, 1L)]
+                    else {
+                      idx_all <- which(!is.na(v))
+                      if (length(idx_all)) v[tail(idx_all, 1L)] else NA_real_
+                    }
+                  })
+                  as.data.table(out)
+                },
+                by = c(id_country), .SDcols = ind_cols
+]
+
+# ==== Matice pro heatmapy (země × indikátory) ====
+X <- as.matrix(fixedyear[, ..ind_cols])
+rownames(X) <- fixedyear[[id_country]]
+
+# ---------------- (1) Korelační heatmapa indikátorů ----------------
+# párová korelace dovolí NA
 cormat <- cor(X, use = "pairwise.complete.obs", method = "pearson")
 
-# symmetric red–white–blue palette, white at 0
-col_fun <- colorRampPalette(c("blue", "white", "red"))(100)
+# plně saturovaná červeno-bílá-modrá, bílá = 0, rozsah [-1,1]
+col_corr <- colorRampPalette(c("blue","white","red"))(100)
+br_corr  <- seq(-1, 1, length.out = 101)
 
 pheatmap(
   cormat,
-  color = col_fun,
-  cluster_rows = TRUE,
-  cluster_cols = TRUE,
-  main = "Clustered correlation heatmap (indicators)",
-  fontsize_row = 6,
-  fontsize_col = 6,
+  color = col_corr, breaks = br_corr,
+  cluster_rows = TRUE, cluster_cols = TRUE,
+  main = "Clustered correlation heatmap (indicators, latest≤cutoff)",
+  fontsize_row = 6, fontsize_col = 6,
   border_color = NA
 )
 
-# ==== 2) Standardized data heatmap (0 always white) ====
-X_scaled <- scale(X)
-rownames(X_scaled) <- rownames(X)
+# ---------------- (2) Datová heatmapa (země × standardizované indikátory) ----------------
+# z-score per sloupec (ignoruje NA), NA ponecháme
+X_scaled <- X
+col_means <- apply(X_scaled, 2, function(v) mean(v, na.rm = TRUE))
+col_sds   <- apply(X_scaled, 2, function(v) sd(v,   na.rm = TRUE))
+for (j in seq_along(ind_cols)) {
+  v <- X_scaled[, j]
+  m <- col_means[j]; s <- col_sds[j]
+  if (is.finite(s) && s > 0) X_scaled[, j] <- (v - m) / s else X_scaled[, j] <- NA_real_
+}
 
-# define symmetric limits around 0
-zmax <- max(abs(X_scaled), na.rm = TRUE)
-breaks <- seq(-zmax, zmax, length.out = 101)
+# symetrické zlomy kolem 0, bílá = 0
+zmax   <- max(abs(X_scaled), na.rm = TRUE); if (!is.finite(zmax)) zmax <- 1
+col_z  <- colorRampPalette(c("blue","white","red"))(100)
+br_z   <- seq(-zmax/2, zmax/2, length.out = 101)
+
+# --- předvýpočet distančních matic s párovou korelací ---
+dist_rows <- as.dist(1 - cor(t(X_scaled), use = "pairwise.complete.obs"))
+dist_cols <- as.dist(1 - cor(X_scaled,    use = "pairwise.complete.obs"))
 
 pheatmap(
   X_scaled,
-  color = colorRampPalette(c("blue", "white", "red"))(100),
-  breaks = breaks,                # ensures white = 0
-  cluster_rows = TRUE,
-  cluster_cols = TRUE,
-  main = "Clustered standardized data (countries × indicators)",
-  fontsize_row = 6,
-  fontsize_col = 6,
+  color = col_z, breaks = br_z,
+  na_col = "grey90",
+  clustering_distance_rows = dist_rows,
+  clustering_distance_cols = dist_cols,
+  cluster_rows = TRUE, cluster_cols = TRUE,
+  main = "Clustered standardized data (countries × indicators, latest≤cutoff)",
+  fontsize_row = 6, fontsize_col = 6,
   border_color = NA
 )
