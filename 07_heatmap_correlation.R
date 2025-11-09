@@ -29,13 +29,18 @@ pheatmap(
   border_color = NA
 )
 
-# ==== 2) Standardized data heatmap ====
+# ==== 2) Standardized data heatmap (0 always white) ====
 X_scaled <- scale(X)
 rownames(X_scaled) <- rownames(X)
 
+# define symmetric limits around 0
+zmax <- max(abs(X_scaled), na.rm = TRUE)
+breaks <- seq(-zmax, zmax, length.out = 101)
+
 pheatmap(
   X_scaled,
-  color = col_fun,
+  color = colorRampPalette(c("blue", "white", "red"))(100),
+  breaks = breaks,                # ensures white = 0
   cluster_rows = TRUE,
   cluster_cols = TRUE,
   main = "Clustered standardized data (countries × indicators)",

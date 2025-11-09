@@ -25,3 +25,5 @@ fixedyear_latest.csv
 heatmap.png
 heatmap_corr.png
 .gitignore
+corrmap.pdf
+heatmap.pdf
