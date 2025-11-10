@@ -7,7 +7,7 @@ library(ggplot2)
 library(ggrepel)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Russian Federation"     # např. "Czechia", "Slovak Republic"
+country_to_plot <- "Czechia"     # např. "Czechia", "Slovak Republic"
 years_win       <- 1995:2025
 ref_year        <- 2025   # rok, pro který byl model trénován (cutoff v trainingu)
 

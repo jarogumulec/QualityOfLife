@@ -5,8 +5,8 @@ library(ggplot2)
 library(ggrepel)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Russian Federation"     # e.g. "Czechia", "Slovak Republic"
-years_win       <- 1995:2025
+country_to_plot <- "Russian Federation" #"Russian Federation"     # e.g. "Czechia", "Slovak Republic"
+years_win       <- 1995:2024 # rather 2024 cause most data anyway are 24 ending
 ref_year        <- 2025  # PCAs created to 2024 only. most data absent for 25
 
 infile_data <- "qualityoflife_merged.csv"
@@ -117,27 +117,49 @@ sub_lab <- sprintf("Path length = %.2f, Net disp. = %.2f, Directionality = %.2f,
                    path_length, net_disp, directionality, angle_deg)
 
 # --- ggplot figure in your clean style ---
-p <- ggplot() +
+library(ggplot2)
+library(ggrepel)
+
+library(ggplot2)
+library(ggrepel)
+library(viridis)
+
+p <- ggplot(traj, aes(PC1, PC2)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
-  { if (!is.null(bg)) geom_point(data = bg, aes(x = PC1, y = PC2),
+  { if (!is.null(bg)) geom_point(data = bg, aes(PC1, PC2),
                                  size = 1.4, color = "grey75") } +
-  geom_path(data = traj, aes(x = PC1, y = PC2), linewidth = 1.0, color = "black") +
-  geom_point(data = traj, aes(x = PC1, y = PC2), size = 1.6, color = "black") +
-  ggrepel::geom_text_repel(data = lab_df, aes(x = PC1, y = PC2, label = Year),
-                           size = 3, max.overlaps = Inf, box.padding = 0.3, point.padding = 0.3) +
-  labs(x = pc1_lab, y = pc2_lab, title = title_lab, subtitle = sub_lab) +
+  geom_path(aes(color = Year), linewidth = 1.0) +
+  geom_point(aes(color = Year), size = 2) +
+  scale_color_viridis_c(option = "turbo", direction = 1) +
+  ggrepel::geom_text_repel(
+    data = lab_df,
+    aes(PC1, PC2, label = Year, color = Year),
+    size = 3,
+    box.padding = 0.5,
+    point.padding = 0.8,
+    segment.size = 0.2,
+    seed = 123
+  ) +
+  labs(
+    x = pc1_lab, y = pc2_lab,
+    title = title_lab, subtitle = sub_lab,
+    color = "Year"
+  ) +
   theme_minimal(base_size = 11) +
   theme(
     panel.grid = element_blank(),
     axis.line  = element_blank(),
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 10, hjust = 0.5),
-    axis.title = element_text(size = 10),
-    axis.text  = element_text(size = 9)
+    legend.position = "none"
   )
 
 p
+
+
+
+
 ggsave(filename = out_png, plot = p, width = 7.2, height = 4.8, dpi = 300)
 
 cat("Saved trajectory CSV:   ", out_csv_traj,  "\n")

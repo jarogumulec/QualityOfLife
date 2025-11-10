@@ -21,7 +21,7 @@ exclude_indicators_like  <- character(0)
 # Prahy
 max_na_ratio     <- 1.0    # max. podíl NA v indikátoru na "latest" tabulce
 corr_threshold   <- 0.999   # tvrdý filtr: pokud |r| > threshold, jednu proměnnou odhoď
-min_features     <- 25
+min_features     <- 7
 max_features     <- 55
 
 # ==== Pomocné funkce ====
@@ -230,3 +230,4 @@ cat(sprintf(
   "\nSelected %d indicators.\nPC1 variance: %.1f%% | PC2 variance: %.1f%% | PC1+PC2: %.1f%%\n",
   length(selected), expl_pc1, expl_pc2, expl_pc1 + expl_pc2
 ))
+

@@ -27,3 +27,5 @@ heatmap_corr.png
 .gitignore
 corrmap.pdf
 heatmap.pdf
+hierarch_clust.pdf
+heatmap_corr.pdf

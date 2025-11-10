@@ -87,3 +87,31 @@ pheatmap(
   fontsize_row = 6, fontsize_col = 6,
   border_color = NA
 )
+
+
+
+
+# --- Jen dendrogramy (bez heatmapy) -------------------------------------------
+# při volání heatmapy si uložte objekt:
+ph <- pheatmap(
+  X_scaled,
+  color = col_z, breaks = br_z,
+  na_col = "grey90",
+  clustering_distance_rows = dist_rows,
+  clustering_distance_cols = dist_cols,
+  clustering_method = "complete",   # stejné jako v pheatmap (default je "complete")
+  cluster_rows = TRUE, cluster_cols = TRUE,
+  main = "Clustered standardized data (countries × indicators, latest≤cutoff)",
+  fontsize_row = 6, fontsize_col = 6,
+  border_color = NA,
+  silent = TRUE                     # potlačí okamžité vykreslení objektu
+)
+
+# --- jen dendrogramy přesně z pheatmap ---
+op <- par(mfrow = c(1,2), mar = c(12,2,3,2), cex = 0.6)
+plot(as.dendrogram(ph$tree_row), main = "Dendrogram států", ylab = "1 - r", xlab = "")
+plot(as.dendrogram(ph$tree_col), main = "Dendrogram indikátorů", ylab = "1 - r", xlab = "")
+par(op)
+
+# pokud chcete i heatmapu, vytáhněte ji zvlášť:
+# grid::grid.newpage(); grid::grid.draw(ph$gtable)

@@ -9,7 +9,7 @@ infile      <- "qualityoflife_merged.csv"
 id_country  <- "Country"
 id_year     <- "Year"
 cutoff_year <- 2025
-param       <- "House_Price To Income Ratio"  # název sloupce/indikátoru
+param       <- "debt_to_GDP" #"House_Price To Income Ratio"  # název sloupce/indikátoru
 cz_name     <- "Czechia"
 
 # ---- Načtení ----
@@ -68,3 +68,4 @@ if (cz_name %in% levels(df$Country)) {
 }
 
 print(p)
+
