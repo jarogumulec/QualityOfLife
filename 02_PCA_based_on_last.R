@@ -103,6 +103,59 @@ scores <- data.table(`Country Name` = cnames,
 loadings <- data.table(indicator = colnames(X),
                        PC1 = p$rotation[,1], PC2 = p$rotation[,2])
 
+
+
+
+
+
+
+# =======================================================
+# === Načtení překladů zemí a indikátorů ================
+# =======================================================
+
+# Cesty k tvým překladovým tabulkám
+tr_countries_file  <- "translated/countries_for_translation.csv"
+tr_indicators_file <- "translated/indicators_for_translation.csv"
+
+# Načtení překladů (volitelné)
+tr_countries  <- fread(tr_countries_file)   # sloupce: original, translation
+tr_indicators <- fread(tr_indicators_file)  # sloupce: original, translation
+
+# Zajistit správné názvy
+stopifnot(all(c("original", "translation") %in% names(tr_countries)))
+stopifnot(all(c("original", "translation") %in% names(tr_indicators)))
+
+# =======================================================
+# === Funkce pro přemapování =============================
+# =======================================================
+
+translate_vec <- function(vec, dict) {
+  m <- merge(
+    data.table(original = vec),
+    dict,
+    by = "original",
+    all.x = TRUE,
+    sort = FALSE
+  )
+  # pokud není překlad, vrátí původní
+  ifelse(is.na(m$translation), m$original, m$translation)
+}
+
+# =======================================================
+# === Aplikace překladů do PCA artefaktů ================
+# =======================================================
+
+# --- 1) Scores (země) ---
+scores[, Country_translated :=
+         translate_vec(`Country Name`, tr_countries)]
+
+# --- 2) Loadings (indikátory) ---
+loadings[, indicator_translated :=
+           translate_vec(indicator, tr_indicators)]
+
+
+
+
 # ==== 6) Plots ====
 ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
@@ -122,6 +175,25 @@ ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 9)
   )
+#translated
+ggplot(scores, aes(x = PC1, y = PC2, label = Country_translated)) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_point(size = 1.6, color = "gray25") +
+  geom_text_repel(size = 3, max.overlaps = Inf, box.padding = 0.5, point.padding = 0.3) +
+  labs(
+    x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
+    y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)")
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_blank(),
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9)
+  )
+
 
 ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
@@ -141,6 +213,26 @@ ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 9)
   )
+
+#translated
+ggplot(loadings, aes(x = PC1, y = PC2, label =  indicator_translated)) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_point(size = 1.8, color = "gray25") +
+  geom_text_repel(size = 3, max.overlaps = Inf, box.padding = 0.5, point.padding = 0.3) +
+  labs(
+    x = paste0("PC1 (", round(100 * summary(p)$importance[2,1], 1), "%)"),
+    y = paste0("PC2 (", round(100 * summary(p)$importance[2,2], 1), "%)")
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_blank(),
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9)
+  )
+
 
 # ==== 7) Export artefaktů ====
 saveRDS(

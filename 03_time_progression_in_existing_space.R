@@ -143,6 +143,8 @@ p <- ggplot(traj, aes(PC1, PC2)) +
     legend.position = "none"
   )
 
+
+
 print(p)  # ensure it displays interactively
 
 ggsave(filename = out_png, plot = p, width = 7.2, height = 4.8, dpi = 300)
