@@ -210,39 +210,43 @@ ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
 library(ggplot2)
 library(ggrepel)
 
-ggplot(scores, aes(PC1, PC2)) +
+p <- ggplot(scores, aes(PC1, PC2)) +
   
   # --- Osy ---
-  geom_vline(xintercept = 0, color="black", linewidth=0.2) +
-  geom_hline(yintercept = 0, color="black", linewidth=0.2) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   
-  # --- Popisky států (bez teček) ---
+  # --- Kompromisní text: malé odskočení, občasný překryv ---
   geom_text_repel(
     aes(label = Country_translated, color = Region),
     size = 3,
-    max.overlaps = Inf,
-    force = 1.0,
-    force_pull = 0.03,
-    box.padding = 0.15,
-    point.padding = 0.05,
-    min.segment.length = Inf,   # bez čárek
+    
+    # Klíčové parametry:
+    force = 0.1,            # malé odpuzování
+    force_pull = 0.01,      # text se drží u bodu
+    max.overlaps = Inf,     # nezmizí
+    box.padding = 0.0,     # minimální padding
+    point.padding = 0.02,
+    max.time = 0.5,         # krátký čas → méně odskočení
+    min.segment.length = Inf,  # bez spojovacích čar
+    
     show.legend = FALSE
   ) +
   
-  # --- Barvy regionů ---
+  # --- Barvy ---
   scale_color_manual(values = c(
     "EU"             = "#4C72B0",
     "Evropa mimo EU" = "#55A868",
     "Mimo Evropu"    = "#C44E52"
   )) +
   
-  # --- Popisky os (bez % hodnot) ---
+  # --- Popisky os ---
   annotate("text",
            x = max(scores$PC1)*0.97, y = -0.3,
-           label = "PC1", size = 2.6, hjust = 0) +
+           label = "PC1", size = 2.6, hjust = 1) +
   annotate("text",
-           x = 0.4, y = max(scores$PC2)*0.97,
-           label = "PC2", size = 2.6, vjust = 0, angle = 90) +
+           x = 0.3, y = max(scores$PC2)*0.97,
+           label = "PC2", size = 2.6, vjust = 1, angle = 90) +
   
   # --- Téma ---
   theme_minimal(base_size = 11) +
@@ -253,7 +257,17 @@ ggplot(scores, aes(PC1, PC2)) +
     panel.grid = element_blank()
   )
 
+print(p)
 
+#save at 400x400px, that looks nice
+ggsave(
+  filename = "PCA_400x400.svg",
+  plot     = p,         # zde musí být objekt tvého PCA grafu
+  device   = svglite,
+  width    = 400/96,    # ≈ 4.17 in
+  height   = 400/96,    # ≈ 4.17 in
+  units    = "in"
+)
 
 
 # loadings 
