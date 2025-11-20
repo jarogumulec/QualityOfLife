@@ -133,6 +133,65 @@ pheatmap(
 
 
 
+# dtto ale o 90 st otocena heatmapa (transpozice) ------------
+
+
+# ---------------- (2) Datová heatmapa (indikátory × země) ----------------
+# X: rows = countries, cols = indicators
+# Pro heatmapu s indikátory na řádcích transponujeme až po škálování
+
+X_scaled <- X
+
+# Standardizace po sloupcích (indikátorech) - původní orientace
+col_means <- apply(X_scaled, 2, function(v) mean(v, na.rm = TRUE))
+col_sds   <- apply(X_scaled, 2, function(v) sd(v,   na.rm = TRUE))
+
+for (j in seq_along(ind_cols)) {
+  v <- X_scaled[, j]
+  m <- col_means[j]; s <- col_sds[j]
+  if (is.finite(s) && s > 0) X_scaled[, j] <- (v - m) / s else X_scaled[, j] <- NA_real_
+}
+
+# === Transpozice: nyní řádky = indikátory, sloupce = státy ===
+X_scaled_t <- t(X_scaled)
+
+# Symetrická barevná škála kolem 0
+zmax <- max(abs(X_scaled_t), na.rm = TRUE); if (!is.finite(zmax)) zmax <- 1
+col_z <- colorRampPalette(c("blue","white","red"))(100)
+br_z  <- seq(-zmax/2.5, zmax/2.5, length.out = 101)
+
+# Distanční matice pro clustering
+dist_rows <- as.dist(1 - cor(t(X_scaled_t), use = "pairwise.complete.obs"))  # korelace mezi indikátory
+dist_cols <- as.dist(1 - cor(X_scaled_t,    use = "pairwise.complete.obs"))  # korelace mezi státy
+
+# ---- 1) vytvořit heatmapu do objektu PH ----
+ph <- pheatmap(
+  X_scaled_t,
+  color = col_z, breaks = br_z,
+  na_col = "grey90",
+  clustering_distance_rows = dist_rows,
+  clustering_distance_cols = dist_cols,
+  cluster_rows = TRUE, cluster_cols = TRUE,
+  fontsize_row = 6, fontsize_col = 6,
+  treeheight_row = 25,
+  treeheight_col = 25,
+  angle_col = 90,
+  # legend = FALSE,
+  border_color = NA,
+  silent = TRUE      # <- KLÍČOVÉ: uloží objekt, nevykreslí
+)
+
+# ---- 2) otevřít SVG zařízení ----
+svglite::svglite("heatmap_translated.svg", width = 6.4, height = 6.0) # odpovida optimu
+
+# ---- 3) vykreslit obsah heatmapy ----
+grid::grid.newpage()
+grid::grid.draw(ph$gtable)
+
+# ---- 4) zavřít SVG ----
+dev.off()
+
+
 
 # --- Jen dendrogramy (bez heatmapy) -------------------------------------------
 # při volání heatmapy si uložte objekt:
