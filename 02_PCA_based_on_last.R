@@ -270,7 +270,7 @@ ggsave(
 )
 
 
-# loadings 
+# loadings -------------
 ggplot(loadings, aes(x = PC1, y = PC2, label = indicator)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
@@ -308,6 +308,91 @@ ggplot(loadings, aes(x = PC1, y = PC2, label =  indicator_translated)) +
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 9)
   )
+
+
+
+# loadings translated, s rotovanými popisky ------
+
+library(ggplot2)
+library(data.table)
+library(dplyr)
+
+df <- as.data.table(loadings)
+
+# --- Výpočet úhlů (0–360°) ---
+df[, angle := atan2(PC2, PC1) * 180/pi]
+df[angle < 0, angle := angle + 360]          # převedeme na 0..360
+
+# --- Barva podle úhlu (HSV barevný kruh) ---
+df[, color := hsv(h = angle/360, s = 0.9, v = 0.9)]
+
+# --- Rotace textu a zarovnání ---
+df[, raw_angle := atan2(PC2, PC1) * 180/pi]
+df[, angle2 := ifelse(cos(raw_angle*pi/180) >= 0, raw_angle, raw_angle + 180)]
+df[, hjust  := ifelse(cos(raw_angle*pi/180) >= 0, 0, 1)]
+
+# --- Posunutí popisků lehce za vektor ---
+df[, label_x := PC1 + 0.02 * sign(PC1)]
+df[, label_y := PC2 + 0.02 * sign(PC2)]
+
+# --- Automatické rozšíření ořezu ---
+xr <- range(df$label_x)
+yr <- range(df$label_y)
+expand_x <- diff(xr) * 0.15
+expand_y <- diff(yr) * 0.15
+
+xmin <- xr[1] - expand_x
+xmax <- xr[2] + expand_x
+ymin <- yr[1] - expand_y
+ymax <- yr[2] + expand_y
+
+# --- Plot ---
+p <- ggplot(df, aes(PC1, PC2)) +
+  
+  # vektory se šipkou, obarvené
+  geom_segment(
+    aes(x = 0, y = 0, xend = PC1, yend = PC2, color = color),
+    linewidth = 0.55,
+    alpha = 0.95,
+    arrow = arrow(type = "closed", length = unit(0.20, "cm"))
+  ) +
+  
+  # text obarven stejnou barvou
+  geom_text(
+    aes(x = label_x, y = label_y,
+        label = indicator_translated,
+        angle = angle2,
+        hjust = hjust,
+        color = color),
+    size = 3
+  ) +
+  
+  # osy PC1/PC2 černě
+  geom_vline(xintercept = 0, linewidth = 0.45, color = "black") +
+  geom_hline(yintercept = 0, linewidth = 0.45, color = "black") +
+  
+  scale_color_identity() +        # použij přesně barvy z df$color
+  coord_fixed(
+    xlim = c(xmin, xmax),
+    ylim = c(ymin, ymax),
+    clip = "off"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.title = element_blank(),
+    axis.text  = element_blank()
+  )
+
+p
+
+
+
+
+
+
+
+
 
 
 # ==== 7) Export artefaktů ====
