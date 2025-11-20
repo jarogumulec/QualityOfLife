@@ -220,7 +220,7 @@ eu_members <- c(
 )
 
 europe_non_eu <- c(
-  "Albania","Bosnia and Herzegovina","Belarus","Iceland","Moldova","Montenegro","Georgia",
+  "Albania","Bosnia and Herzegovina","Belarus","Iceland","Moldova","Montenegro",
   "North Macedonia","Norway","Serbia","Switzerland","Ukraine","United Kingdom"
 )
 
