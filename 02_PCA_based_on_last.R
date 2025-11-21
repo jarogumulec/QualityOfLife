@@ -259,13 +259,73 @@ p <- ggplot(scores, aes(PC1, PC2)) +
 
 print(p)
 
+
+
+# jak chtel Honza puntiky zpet
+p <- ggplot(scores, aes(PC1, PC2)) +
+  
+  # --- Osy ---
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  
+  # --- Puntíky států ---
+  geom_point(aes(color = Region), size = 2.2, show.legend = FALSE) +
+  
+  # --- Kompromisní text: malé odskočení, povolený mírný překryv ---
+  geom_text_repel(
+    aes(label = Country_translated, color = Region),
+    size = 3,
+    
+    # minimal repel
+    force = 0.1,
+    force_pull = 0.01,
+    
+    max.overlaps = Inf,     # nikdy nezmizí
+    box.padding = 0.2,
+    point.padding = 0.02,
+    max.time = 0.5,
+    min.segment.length = Inf,   # bez čárek
+    
+    show.legend = FALSE
+  ) +
+  
+  # --- Barvy regionů ---
+  scale_color_manual(values = c(
+    "EU"             = "#4C72B0",
+    "Evropa mimo EU" = "#55A868",
+    "Mimo Evropu"    = "#C44E52"
+  )) +
+  
+  # # --- Popisky os ---
+  # annotate("text",
+  #          x = max(scores$PC1)*0.97, y = -0.3,
+  #          label = "PC1", size = 2.6, hjust = 1) +
+  # annotate("text",
+  #          x = 0.3, y = max(scores$PC2)*0.97,
+  #          label = "PC2", size = 2.6, vjust = 1, angle = 90) +
+  # 
+  # --- Téma ---
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    axis.text  = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank()
+  )
+
+print(p)
+
+
+
+
+
 #save at 400x400px, that looks nice
 ggsave(
-  filename = "PCA_400x400.svg",
+  filename = "PCA.svg",
   plot     = p,         # zde musí být objekt tvého PCA grafu
   device   = svglite,
-  width    = 400/96,    # ≈ 4.17 in
-  height   = 400/96,    # ≈ 4.17 in
+  width    = 380/96,    # ≈ 4.17 in
+  height   = 380/96,    # ≈ 4.17 in
   units    = "in"
 )
 
