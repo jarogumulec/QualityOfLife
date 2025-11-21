@@ -196,6 +196,121 @@ ggsave(filename = out_png, plot = p, width = 7.2, height = 4.8, dpi = 300)
 
 
 
+# Vizuál překlopený do češtiny
+
+# Cesty k tvým překladovým tabulkám
+tr_countries_file  <- "translated/countries_for_translation.csv"
+tr_indicators_file <- "translated/indicators_for_translation.csv"
+
+# Načtení překladů (volitelné)
+tr_countries  <- fread(tr_countries_file)   # sloupce: original, translation
+tr_indicators <- fread(tr_indicators_file)  # sloupce: original, translation
+
+# Zajistit správné názvy
+stopifnot(all(c("original", "translation") %in% names(tr_countries)))
+stopifnot(all(c("original", "translation") %in% names(tr_indicators)))
+
+# =======================================================
+# === Funkce pro přemapování =============================
+# =======================================================
+
+translate_vec <- function(vec, dict) {
+  m <- merge(
+    data.table(original = vec),
+    dict,
+    by = "original",
+    all.x = TRUE,
+    sort = FALSE
+  )
+  # pokud není překlad, vrátí původní
+  ifelse(is.na(m$translation), m$original, m$translation)
+}
+
+
+# ======= Přeložený název země =======
+cz_country <- translate_vec(country_to_plot, tr_countries)
+
+# ======= Přímočarost v procentech =======
+
+
+
+# === RECOMPUTE METRICS FOR THIS TRAJ ===
+if (nrow(traj) >= 2) {
+  dxv <- diff(traj$PC1)
+  dyv <- diff(traj$PC2)
+  seg_len <- sqrt(dxv^2 + dyv^2)
+  path_length <- sum(seg_len, na.rm = TRUE)
+  
+  n <- nrow(traj)
+  dx <- traj$PC1[n] - traj$PC1[1]
+  dy <- traj$PC2[n] - traj$PC2[1]
+  net_disp <- sqrt(dx^2 + dy^2)
+  directionality <- if (path_length > 0) net_disp / path_length else NA_real_
+  angle_deg <- atan2(dy, dx) * 180 / pi
+} else {
+  path_length <- net_disp <- directionality <- angle_deg <- NA_real_
+}
+
+directionality_pct <- directionality * 100
+
+title_lab <- sprintf("%s – cesta v čase", cz_country)
+subtitle_lab <- sprintf("vzdálenost = %.2f, přímočarost = %.1f%%",
+                        path_length, directionality_pct)
+
+
+
+
+# ======= Vykreslení (sjednocený vzhled jako PCA států) =======
+
+bg_layer <- if (!is.null(bg))
+  geom_point(data = bg, aes(PC1, PC2),
+             size = 1.4, color = "grey75") else NULL
+
+p <- ggplot(traj, aes(PC1, PC2)) +
+  
+  # --- Osy ---
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
+  
+  # --- Pozadí ostatních států ---
+  bg_layer +
+  
+  # --- Trajektorie ---
+  geom_path(aes(color = Year), linewidth = 1.0) +
+  geom_point(aes(color = Year), size = 2) +
+  scale_color_viridis_c(option = "turbo", direction = 1) +
+  
+  # --- Popisky vybraných roků ---
+  ggrepel::geom_text_repel(
+    data = lab_df, aes(PC1, PC2, label = Year, color = Year),
+    size = 3, box.padding = 0.4, point.padding = 0.6,
+    segment.size = 0.2, seed = 123
+  ) +
+  
+  # --- Český popisek os ---
+  labs(
+    x = "PC1",
+    y = "PC2",
+    title = title_lab,
+    subtitle = subtitle_lab
+  ) +
+  
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_blank(),
+    axis.title = element_text(size = 10),
+    axis.text  = element_blank(),
+    plot.title = element_text(size = 10, face = "bold", hjust = 0),
+    plot.subtitle = element_text(size = 10, hjust = 0),
+    legend.position = "none"
+  )
+
+print(p)
+
+
+
+
 # -------------------------------------------------------
 # === METRICS FOR ALL COUNTRIES (CONSISTENTLY) ===
 # -------------------------------------------------------
