@@ -319,23 +319,23 @@ library(dplyr)
 
 df <- as.data.table(loadings)
 
-# --- Výpočet úhlů (0–360°) ---
+# --- Výpočet úhlů 0–360 ---
 df[, angle := atan2(PC2, PC1) * 180/pi]
-df[angle < 0, angle := angle + 360]          # převedeme na 0..360
+df[angle < 0, angle := angle + 360]
 
-# --- Barva podle úhlu (HSV barevný kruh) ---
+# --- barva podle úhlu ---
 df[, color := hsv(h = angle/360, s = 0.9, v = 0.9)]
 
-# --- Rotace textu a zarovnání ---
+# --- rotace textu + zarovnání ---
 df[, raw_angle := atan2(PC2, PC1) * 180/pi]
 df[, angle2 := ifelse(cos(raw_angle*pi/180) >= 0, raw_angle, raw_angle + 180)]
 df[, hjust  := ifelse(cos(raw_angle*pi/180) >= 0, 0, 1)]
 
-# --- Posunutí popisků lehce za vektor ---
+# --- odsazení od šipky ---
 df[, label_x := PC1 + 0.02 * sign(PC1)]
 df[, label_y := PC2 + 0.02 * sign(PC2)]
 
-# --- Automatické rozšíření ořezu ---
+# --- ořez grafu ---
 xr <- range(df$label_x)
 yr <- range(df$label_y)
 expand_x <- diff(xr) * 0.15
@@ -346,10 +346,10 @@ xmax <- xr[2] + expand_x
 ymin <- yr[1] - expand_y
 ymax <- yr[2] + expand_y
 
-# --- Plot ---
+# --- graf ---
 p <- ggplot(df, aes(PC1, PC2)) +
   
-  # vektory se šipkou, obarvené
+  # vektory
   geom_segment(
     aes(x = 0, y = 0, xend = PC1, yend = PC2, color = color),
     linewidth = 0.55,
@@ -357,7 +357,7 @@ p <- ggplot(df, aes(PC1, PC2)) +
     arrow = arrow(type = "closed", length = unit(0.20, "cm"))
   ) +
   
-  # text obarven stejnou barvou
+  # text indikátorů
   geom_text(
     aes(x = label_x, y = label_y,
         label = indicator_translated,
@@ -367,30 +367,56 @@ p <- ggplot(df, aes(PC1, PC2)) +
     size = 3
   ) +
   
-  # osy PC1/PC2 černě
+  # osy
   geom_vline(xintercept = 0, linewidth = 0.45, color = "black") +
   geom_hline(yintercept = 0, linewidth = 0.45, color = "black") +
   
-  scale_color_identity() +        # použij přesně barvy z df$color
-  coord_fixed(
-    xlim = c(xmin, xmax),
-    ylim = c(ymin, ymax),
-    clip = "off"
+  # popisky os — malé, těsně u os
+  annotate(
+    "text",
+    x = xmax * 0.98,
+    y = 0,
+    label = "PC1",
+    size = 2.8,
+    hjust = 1,
+    vjust = -0.3
   ) +
+  annotate(
+    "text",
+    x = 0,
+    y = ymax * 0.98,
+    label = "PC2",
+    size = 2.8,
+    hjust = -0.3,
+    vjust = 1,
+    angle = 90
+  ) +
+  
+  scale_color_identity() +
+  coord_fixed(xlim = c(xmin, xmax), ylim = c(ymin, ymax), clip = "off") +
   theme_minimal(base_size = 11) +
   theme(
     panel.grid = element_blank(),
-    axis.title = element_blank(),
-    axis.text  = element_blank()
+    axis.text  = element_blank(),
+    axis.title = element_blank()
   )
 
 p
 
 
+library(svglite)
+ggsave(
+  filename = "pca_loadings_sunburst.svg",
+  plot     = p,
+  device   = svglite,
+  width    = 380/72,   # ≈ 7.36 in
+  height   = 440/72,   # ≈ 8.33 in
+  units    = "in"
+)
 
 
 
-
+# 530x600 export
 
 
 
