@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 525.6 410.4">
+  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st2 {
+        letter-spacing: .06em;
+      }
+
+      .st2, .st3, .st4, .st5, .st6, .st7, .st8 {
+        isolation: isolate;
+      }
+
+      .st2, .st3, .st4, .st5, .st7, .st8 {
+        font-family: ArialMT, Arial;
+      }
+
+      .st2, .st8 {
+        font-size: 14.4px;
+      }
+
+      .st3 {
+        letter-spacing: .13em;
+      }
+
+      .st3, .st5 {
+        font-size: 9.96px;
+      }
+
+      .st4 {
+        fill: #4d4d4d;
+        font-size: 9.6px;
+      }
+
+      .st9, .st10, .st11 {
+        fill-opacity: .6;
+      }
+
+      .st9, .st12 {
+        fill: #4c72b0;
+      }
+
+      .st10 {
+        fill: #c44e52;
+      }
+
+      .st7 {
+        font-size: 12px;
+      }
+
+      .st13 {
+        clip-path: url(#clippath-1);
+      }
+
+      .st14 {
+        clip-path: url(#clippath-3);
+      }
+
+      .st15 {
+        clip-path: url(#clippath-4);
+      }
+
+      .st16 {
+        clip-path: url(#clippath-2);
+      }
+
+      .st17 {
+        clip-path: url(#clippath-5);
+      }
+
+      .st18 {
+        fill: #fff;
+      }
+
+      .st1 {
+        stroke: #ebebeb;
+        stroke-linejoin: round;
+        stroke-width: 1.16px;
+      }
+
+      .st11 {
+        fill: #55a868;
+      }
+
+      .st19 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" y="0" width="262.8" height="410.4"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="st0" x="71.08" y="25.28" width="185.75" height="350.77"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="st0" y="0" width="262.8" height="410.4"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="st0" x="262.8" y=".53" width="262.8" height="410.4"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="st0" x="333.88" y="25.81" width="185.75" height="350.77"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="st0" x="262.8" y=".53" width="262.8" height="410.4"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect class="st18" y="0" width="262.8" height="410.4"/>
+    <g class="st19">
+      <rect class="st18" y="0" width="262.8" height="410.4"/>
+    </g>
+    <g class="st13">
+      <g>
+        <line class="st1" x1="79.52" y1="376.05" x2="79.52" y2="25.28"/>
+        <line class="st1" x1="136.57" y1="376.05" x2="136.57" y2="25.28"/>
+        <line class="st1" x1="193.61" y1="376.05" x2="193.61" y2="25.28"/>
+        <line class="st1" x1="250.66" y1="376.05" x2="250.66" y2="25.28"/>
+        <rect class="st10" x="79.52" y="367.73" width="23.39" height="6.9"/>
+        <rect class="st11" x="79.52" y="359.61" width="31.95" height="6.9"/>
+        <rect class="st9" x="79.52" y="351.49" width="38.79" height="6.9"/>
+        <rect class="st9" x="79.52" y="343.37" width="38.79" height="6.9"/>
+        <rect class="st9" x="79.52" y="335.25" width="42.22" height="6.9"/>
+        <rect class="st9" x="79.52" y="327.13" width="42.22" height="6.9"/>
+        <rect class="st9" x="79.52" y="319.01" width="42.79" height="6.9"/>
+        <rect class="st11" x="79.52" y="310.89" width="44.5" height="6.9"/>
+        <rect class="st9" x="79.52" y="302.77" width="46.21" height="6.9"/>
+        <rect class="st9" x="79.52" y="294.65" width="47.35" height="6.9"/>
+        <rect class="st9" x="79.52" y="286.53" width="50.77" height="6.9"/>
+        <rect class="st9" x="79.52" y="278.41" width="53.62" height="6.9"/>
+        <rect class="st9" x="79.52" y="270.29" width="55.91" height="6.9"/>
+        <rect class="st11" x="79.52" y="262.17" width="56.48" height="6.9"/>
+        <rect class="st10" x="79.52" y="254.05" width="57.05" height="6.9"/>
+        <rect class="st9" x="79.52" y="245.93" width="58.19" height="6.9"/>
+        <rect class="st10" x="79.52" y="237.81" width="59.9" height="6.9"/>
+        <rect class="st9" x="79.52" y="229.7" width="61.04" height="6.9"/>
+        <rect class="st9" x="79.52" y="221.58" width="62.75" height="6.9"/>
+        <rect class="st10" x="79.52" y="213.46" width="62.75" height="6.9"/>
+        <rect class="st9" x="79.52" y="205.34" width="62.75" height="6.9"/>
+        <rect class="st9" x="79.52" y="197.22" width="63.32" height="6.9"/>
+        <rect class="st11" x="79.52" y="189.1" width="63.32" height="6.9"/>
+        <rect class="st9" x="79.52" y="180.98" width="63.89" height="6.9"/>
+        <rect class="st11" x="79.52" y="172.86" width="65.6" height="6.9"/>
+        <rect class="st9" x="79.52" y="164.74" width="69.6" height="6.9"/>
+        <rect class="st9" x="79.52" y="156.62" width="70.17" height="6.9"/>
+        <rect class="st11" x="79.52" y="148.5" width="70.17" height="6.9"/>
+        <rect class="st11" x="79.52" y="140.38" width="71.31" height="6.9"/>
+        <rect class="st10" x="79.52" y="132.26" width="71.31" height="6.9"/>
+        <rect class="st9" x="79.52" y="124.14" width="71.88" height="6.9"/>
+        <rect class="st12" x="79.52" y="116.02" width="73.59" height="6.9"/>
+        <rect class="st10" x="79.52" y="107.9" width="74.16" height="6.9"/>
+        <rect class="st9" x="79.52" y="99.78" width="76.44" height="6.9"/>
+        <rect class="st9" x="79.52" y="91.66" width="77.58" height="6.9"/>
+        <rect class="st11" x="79.52" y="83.54" width="78.15" height="6.9"/>
+        <rect class="st9" x="79.52" y="75.42" width="78.73" height="6.9"/>
+        <rect class="st11" x="79.52" y="67.3" width="80.44" height="6.9"/>
+        <rect class="st9" x="79.52" y="59.18" width="82.72" height="6.9"/>
+        <rect class="st11" x="79.52" y="51.06" width="85.57" height="6.9"/>
+        <rect class="st10" x="79.52" y="42.94" width="91.85" height="6.9"/>
+        <rect class="st11" x="79.52" y="34.82" width="95.84" height="6.9"/>
+        <rect class="st10" x="79.52" y="26.7" width="168.86" height="6.9"/>
+        <g class="st6">
+          <text class="st5" transform="translate(154.54 123.03)"><tspan x="0" y="0">12.9</tspan></text>
+          <text class="st3" transform="translate(173.92 123.03)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st5" transform="translate(178.03 123.03)"><tspan x="0" y="0">(percentil</tspan></text>
+          <text class="st3" transform="translate(219 123.03)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st5" transform="translate(223.11 123.03)"><tspan x="0" y="0">73.8)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g class="st16">
+      <g>
+        <g class="st6">
+          <text class="st4" transform="translate(5.93 374.61)"><tspan x="0" y="0">Spojené Státy</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(40.08 366.5)"><tspan x="0" y="0">Island</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(39.01 358.38)"><tspan x="0" y="0">Belgie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(33.15 350.26)"><tspan x="0" y="0">Dánsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(13.42 342.14)"><tspan x="0" y="0">Nizozemsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(20.87 334.02)"><tspan x="0" y="0">Španělsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(44.9 325.9)"><tspan x="0" y="0">Irsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(35.29 317.78)"><tspan x="0" y="0">Norsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(28.88 309.66)"><tspan x="0" y="0">Švédsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(37.43 301.54)"><tspan x="0" y="0">Finsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(23.01 293.42)"><tspan x="0" y="0">Bulharsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(27.82 285.3)"><tspan x="0" y="0">Lotyšsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(25.15 277.18)"><tspan x="0" y="0">Německo</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(7 269.06)"><tspan x="0" y="0">Velká Británie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(24.6 260.94)"><tspan x="0" y="0">Japonsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(26.21 252.82)"><tspan x="0" y="0">Estonsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(11.81 244.7)"><tspan x="0" y="0">Nový Zéland</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(45.42 236.58)"><tspan x="0" y="0">Itálie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(28.35 228.46)"><tspan x="0" y="0">Rakusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(32.6 220.34)"><tspan x="0" y="0">Kanada</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(19.81 212.22)"><tspan x="0" y="0">Rumunsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(45.42 204.1)"><tspan x="0" y="0">Litva</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(21.42 195.98)"><tspan x="0" y="0">Švýcarsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(24.61 187.86)"><tspan x="0" y="0">Slovinsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(27.28 179.74)"><tspan x="0" y="0">Moldávie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(36.89 171.62)"><tspan x="0" y="0">Polsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(33.69 163.5)"><tspan x="0" y="0">Francie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(16.08 155.38)"><tspan x="0" y="0">Černá Hora</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(38.48 147.26)"><tspan x="0" y="0">Bosna</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(31.38 139.14)"><tspan x="0" y="0">Turecko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(15 131.02)"><tspan x="0" y="0">Portugalsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(38.49 122.9)"><tspan x="0" y="0">Česko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(37.43 114.79)"><tspan x="0" y="0">Gruzie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(17.15 106.67)"><tspan x="0" y="0">Chorvatsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(38.49 98.55)"><tspan x="0" y="0">Řecko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(23.01 90.43)"><tspan x="0" y="0">Bělorusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(22.99 82.31)"><tspan x="0" y="0">Maďarsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(33.67 74.19)"><tspan x="0" y="0">Albánie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(21.41 66.07)"><tspan x="0" y="0">Slovensko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(30.49 57.95)"><tspan x="0" y="0">Ukrajina</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(38.49 49.83)"><tspan x="0" y="0">Rusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(35.82 41.71)"><tspan x="0" y="0">Srbsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(45.42 33.59)"><tspan x="0" y="0">Čína</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(76.85 388.3)"><tspan x="0" y="0">0</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(131.23 388.3)"><tspan x="0" y="0">10</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(188.27 388.3)"><tspan x="0" y="0">20</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(245.32 388.3)"><tspan x="0" y="0">30</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st7" transform="translate(114.92 401.9)"><tspan x="0" y="0">roky příjmu rodiny</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st8" transform="translate(80.64 16.28)"><tspan x="0" y="0">Cena nemovitostí k příjmu</tspan></text>
+          <text class="st2" transform="translate(64.51 16.28)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st2" transform="translate(208.67 16.28)"><tspan x="0" y="0"> </tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g>
+    <rect class="st18" x="262.8" y=".53" width="262.8" height="410.4"/>
+    <g class="st14">
+      <rect class="st18" x="262.8" y=".53" width="262.8" height="410.4"/>
+    </g>
+    <g class="st15">
+      <g>
+        <line class="st1" x1="342.32" y1="376.58" x2="342.32" y2="25.81"/>
+        <line class="st1" x1="378.08" y1="376.58" x2="378.08" y2="25.81"/>
+        <line class="st1" x1="413.84" y1="376.58" x2="413.84" y2="25.81"/>
+        <line class="st1" x1="449.6" y1="376.58" x2="449.6" y2="25.81"/>
+        <line class="st1" x1="485.36" y1="376.58" x2="485.36" y2="25.81"/>
+        <rect class="st10" x="342.32" y="368.26" width="14.52" height="6.9"/>
+        <rect class="st9" x="342.32" y="360.14" width="16.74" height="6.9"/>
+        <rect class="st10" x="342.32" y="352.02" width="17.16" height="6.9"/>
+        <rect class="st9" x="342.32" y="343.9" width="17.24" height="6.9"/>
+        <rect class="st11" x="342.32" y="335.78" width="21.1" height="6.9"/>
+        <rect class="st9" x="342.32" y="327.66" width="22.53" height="6.9"/>
+        <rect class="st9" x="342.32" y="319.54" width="23.6" height="6.9"/>
+        <rect class="st10" x="342.32" y="311.42" width="25.82" height="6.9"/>
+        <rect class="st11" x="342.32" y="303.3" width="26.82" height="6.9"/>
+        <rect class="st9" x="342.32" y="295.18" width="27.32" height="6.9"/>
+        <rect class="st9" x="342.32" y="287.06" width="27.75" height="6.9"/>
+        <rect class="st11" x="342.32" y="278.94" width="27.75" height="6.9"/>
+        <rect class="st11" x="342.32" y="270.82" width="28.54" height="6.9"/>
+        <rect class="st11" x="342.32" y="262.7" width="30.54" height="6.9"/>
+        <rect class="st12" x="342.32" y="254.58" width="30.97" height="6.9"/>
+        <rect class="st9" x="342.32" y="246.46" width="31.33" height="6.9"/>
+        <rect class="st11" x="342.32" y="238.34" width="31.83" height="6.9"/>
+        <rect class="st9" x="342.32" y="230.23" width="33.47" height="6.9"/>
+        <rect class="st10" x="342.32" y="222.11" width="35.9" height="6.9"/>
+        <rect class="st9" x="342.32" y="213.99" width="39.55" height="6.9"/>
+        <rect class="st11" x="342.32" y="205.87" width="40.05" height="6.9"/>
+        <rect class="st9" x="342.32" y="197.75" width="40.91" height="6.9"/>
+        <rect class="st9" x="342.32" y="189.63" width="41.05" height="6.9"/>
+        <rect class="st9" x="342.32" y="181.51" width="41.2" height="6.9"/>
+        <rect class="st11" x="342.32" y="173.39" width="42.48" height="6.9"/>
+        <rect class="st11" x="342.32" y="165.27" width="43.48" height="6.9"/>
+        <rect class="st9" x="342.32" y="157.15" width="45.42" height="6.9"/>
+        <rect class="st9" x="342.32" y="149.03" width="47.63" height="6.9"/>
+        <rect class="st9" x="342.32" y="140.91" width="52.57" height="6.9"/>
+        <rect class="st9" x="342.32" y="132.79" width="57.79" height="6.9"/>
+        <rect class="st9" x="342.32" y="124.67" width="58.72" height="6.9"/>
+        <rect class="st10" x="342.32" y="116.55" width="63.15" height="6.9"/>
+        <rect class="st11" x="342.32" y="108.43" width="64.15" height="6.9"/>
+        <rect class="st9" x="342.32" y="100.31" width="67.87" height="6.9"/>
+        <rect class="st11" x="342.32" y="92.19" width="72.38" height="6.9"/>
+        <rect class="st9" x="342.32" y="84.07" width="72.66" height="6.9"/>
+        <rect class="st9" x="342.32" y="75.95" width="74.88" height="6.9"/>
+        <rect class="st10" x="342.32" y="67.83" width="79.6" height="6.9"/>
+        <rect class="st9" x="342.32" y="59.71" width="80.89" height="6.9"/>
+        <rect class="st10" x="342.32" y="51.59" width="87.47" height="6.9"/>
+        <rect class="st9" x="342.32" y="43.47" width="96.77" height="6.9"/>
+        <rect class="st9" x="342.32" y="35.35" width="110.71" height="6.9"/>
+        <rect class="st10" x="342.32" y="27.23" width="168.86" height="6.9"/>
+        <g class="st6">
+          <text class="st5" transform="translate(375.47 261.6)"><tspan x="0" y="0">43.3</tspan></text>
+          <text class="st3" transform="translate(394.85 261.6)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st5" transform="translate(398.96 261.6)"><tspan x="0" y="0">(percentil</tspan></text>
+          <text class="st3" transform="translate(439.93 261.6)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st5" transform="translate(444.04 261.6)"><tspan x="0" y="0">33.3)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g class="st17">
+      <g>
+        <g class="st6">
+          <text class="st4" transform="translate(301.29 375.14)"><tspan x="0" y="0">Rusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(289.01 367.03)"><tspan x="0" y="0">Estonsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(294.18 358.91)"><tspan x="0" y="0">Turecko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(285.81 350.79)"><tspan x="0" y="0">Bulharsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(301.28 342.67)"><tspan x="0" y="0">Bosna</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(295.95 334.55)"><tspan x="0" y="0">Dánsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(291.68 326.43)"><tspan x="0" y="0">Švédsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(300.22 318.31)"><tspan x="0" y="0">Gruzie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(284.22 310.19)"><tspan x="0" y="0">Švýcarsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(308.22 302.07)"><tspan x="0" y="0">Litva</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(307.7 293.95)"><tspan x="0" y="0">Irsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(290.08 285.83)"><tspan x="0" y="0">Moldávie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(285.81 277.71)"><tspan x="0" y="0">Bělorusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(298.09 269.59)"><tspan x="0" y="0">Norsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(301.29 261.47)"><tspan x="0" y="0">Česko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(276.22 253.35)"><tspan x="0" y="0">Nizozemsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(298.62 245.23)"><tspan x="0" y="0">Srbsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(290.62 237.11)"><tspan x="0" y="0">Lotyšsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(274.61 228.99)"><tspan x="0" y="0">Nový Zéland</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(299.69 220.87)"><tspan x="0" y="0">Polsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(296.47 212.75)"><tspan x="0" y="0">Albánie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(284.21 204.63)"><tspan x="0" y="0">Slovensko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(282.61 196.51)"><tspan x="0" y="0">Rumunsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(279.95 188.39)"><tspan x="0" y="0">Chorvatsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(302.88 180.27)"><tspan x="0" y="0">Island</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(278.88 172.15)"><tspan x="0" y="0">Černá Hora</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(287.95 164.03)"><tspan x="0" y="0">Německo</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(287.41 155.91)"><tspan x="0" y="0">Slovinsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(285.79 147.79)"><tspan x="0" y="0">Maďarsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(291.15 139.67)"><tspan x="0" y="0">Rakusko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(300.22 131.55)"><tspan x="0" y="0">Finsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(308.22 123.43)"><tspan x="0" y="0">Čína</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(293.29 115.32)"><tspan x="0" y="0">Ukrajina</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(277.8 107.2)"><tspan x="0" y="0">Portugalsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(269.8 99.08)"><tspan x="0" y="0">Velká Británie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(283.67 90.96)"><tspan x="0" y="0">Španělsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(301.81 82.84)"><tspan x="0" y="0">Belgie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(295.4 74.72)"><tspan x="0" y="0">Kanada</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(296.49 66.6)"><tspan x="0" y="0">Francie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(268.72 58.48)"><tspan x="0" y="0">Spojené Státy</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(308.22 50.36)"><tspan x="0" y="0">Itálie</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(301.29 42.24)"><tspan x="0" y="0">Řecko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(287.4 34.12)"><tspan x="0" y="0">Japonsko</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(339.65 388.83)"><tspan x="0" y="0">0</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(372.74 388.83)"><tspan x="0" y="0">50</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(405.83 388.83)"><tspan x="0" y="0">100</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(441.59 388.83)"><tspan x="0" y="0">150</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st4" transform="translate(477.35 388.83)"><tspan x="0" y="0">200</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st7" transform="translate(410.08 402.43)"><tspan x="0" y="0">%</tspan></text>
+        </g>
+        <g class="st6">
+          <text class="st8" transform="translate(342.88 16.81)"><tspan x="0" y="0">Státní</tspan></text>
+          <text class="st8" transform="translate(371.5 16.81)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st8" transform="translate(384.48 16.81)"><tspan x="0" y="0">dluh</tspan></text>
+          <text class="st8" transform="translate(402.7 16.81)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st8" transform="translate(415.68 16.81)"><tspan x="0" y="0">/</tspan></text>
+          <text class="st8" transform="translate(410.68 16.81)"><tspan x="0" y="0"> </tspan></text>
+          <text class="st8" transform="translate(423.65 16.81)"><tspan x="0" y="0">HDP</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

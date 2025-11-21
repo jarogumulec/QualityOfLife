@@ -8,7 +8,7 @@ library(ggrepel)
 library(viridis)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Czechia"   # e.g. "Czechia"
+country_to_plot <- "Bosnia and Herzegovina"   # e.g. "Czechia"
 years_win       <- 1995:2024
 ref_year        <- 2025              # PCA trained on ≤2024 data
 
@@ -253,7 +253,7 @@ if (nrow(traj) >= 2) {
 
 directionality_pct <- directionality * 100
 
-title_lab <- sprintf("%s – cesta v čase", cz_country)
+title_lab <- sprintf("%s", cz_country)
 subtitle_lab <- sprintf("vzdálenost = %.2f, přímočarost = %.1f%%",
                         path_length, directionality_pct)
 
@@ -289,10 +289,10 @@ p <- ggplot(traj, aes(PC1, PC2)) +
   
   # --- Český popisek os ---
   labs(
-    x = "PC1",
-    y = "PC2",
-    title = title_lab,
-    subtitle = subtitle_lab
+    x = NULL,
+    y = NULL
+ #   title = title_lab,
+#  subtitle = subtitle_lab
   ) +
   
   theme_minimal(base_size = 11) +
@@ -302,12 +302,33 @@ p <- ggplot(traj, aes(PC1, PC2)) +
     axis.title = element_text(size = 10),
     axis.text  = element_blank(),
     plot.title = element_text(size = 10, face = "bold", hjust = 0),
-    plot.subtitle = element_text(size = 10, hjust = 0),
+   plot.subtitle = element_text(size = 10, hjust = 0),
     legend.position = "none"
   )
 
+p <- p +
+  annotate("text", x = -Inf, y = Inf, hjust = 0, vjust = 1,
+           label = sprintf("%s", cz_country),
+           size = 3.3, fontface = "bold") +
+  annotate("text", x = Inf, y = Inf, hjust = 1, vjust = 1,
+           label = sprintf("vzdálenost %.2f, přímočarost %.1f%%",
+                           path_length, directionality_pct),
+           size = 3.3)
+
+
 print(p)
 
+
+#450x300
+ggsave(
+  filename = file.path(out_dir, sprintf("trajectory_%s_%d_pc12_locf.svg",
+                                        gsub("\\s+","_", cz_country), ref_year)),
+  plot = p,
+  device = "svg",
+  width = 320/72,   # 450 px při 72 dpi
+  height = 210/72,  # 300 px při 72 dpi
+  dpi = 72
+)
 
 
 
