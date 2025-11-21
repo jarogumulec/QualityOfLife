@@ -11,7 +11,7 @@ infile      <- "qualityoflife_merged.csv"
 id_country  <- "Country"
 id_year     <- "Year"
 cutoff_year <- 2025
-param       <- "debt_to_GDP" #"House_Price To Income Ratio"     # název indikátoru v datasetu
+param       <- "House_Price To Income Ratio"# "debt_to_GDP" #"House_Price To Income Ratio"     # název indikátoru v datasetu
 cz_name     <- "Czechia"                         # originální EN název země
 
 # ---- Překlady ----
@@ -117,7 +117,8 @@ p <- ggplot(
     legend.position = "NONE",
     panel.grid.major.y = element_blank(),
     panel.grid.minor   = element_blank()
-  )
+  ) +
+  ggtitle("Státní dluh / HDP")
 
 # ---- Popisek Česka: jen "12.9 (percentil xx.x)" ----
 if (cz_name %in% df$Country) {
@@ -138,6 +139,7 @@ if (cz_name %in% df$Country) {
       color = "black"
     ) +
     expand_limits(x = cz_row$value * 1.15)
+ 
 }
 
 print(p)
@@ -148,5 +150,5 @@ ggsave(
   plot     = p,
   device   = svglite,
   width    = 3.65,   # palce
-  height   = 5.60    # palce
+  height   = 5.70    # palce
 )

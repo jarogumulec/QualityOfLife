@@ -8,7 +8,7 @@ library(ggrepel)
 library(viridis)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Belarus"   # e.g. "Czechia"
+country_to_plot <- "Czechia"   # e.g. "Czechia"
 years_win       <- 1995:2024
 ref_year        <- 2025              # PCA trained on ≤2024 data
 
@@ -48,6 +48,8 @@ setnames(dsub, id_year, "Year")
 dsub <- merge(data.table(Year = years_win), dsub, by = "Year", all.x = TRUE)
 setorder(dsub, Year)
 
+
+
 # Fill missing data and standardize relative to PCA model
 for (v in vars) {
   vec <- dsub[[v]]
@@ -60,10 +62,53 @@ for (v in vars) {
   dsub[[v]] <- (vec - mdl$center[v]) / mdl$scale[v]
 }
 
-# Align columns and project
+
+# -------------------------------------------------------
+# === ALIGN AND PROJECT TRAJECTORY INTO PCA SPACE =======
+# -------------------------------------------------------
+
+# Reorder matrix columns to PCA variable order
 X <- as.matrix(dsub[, ..vars])
+
+# Project into PCA space
 proj <- X %*% mdl$pca$rotation
-traj <- data.table(Year = dsub$Year, PC1 = proj[,1], PC2 = proj[,2])
+
+# Construct trajectory table
+traj <- data.table(
+  Year = dsub$Year,
+  PC1  = proj[, 1],
+  PC2  = proj[, 2]
+)
+
+# -------------------------------------------------------
+# === COMPUTE TRAJECTORY METRICS ========================
+# -------------------------------------------------------
+
+if (nrow(traj) >= 2) {
+  
+  dxv <- diff(traj$PC1)
+  dyv <- diff(traj$PC2)
+  seg_len <- sqrt(dxv^2 + dyv^2)
+  
+  path_length <- sum(seg_len, na.rm = TRUE)
+  
+  n  <- nrow(traj)
+  dx <- traj$PC1[n] - traj$PC1[1]
+  dy <- traj$PC2[n] - traj$PC2[1]
+  net_disp <- sqrt(dx^2 + dy^2)
+  
+  directionality <- if (path_length > 0) net_disp / path_length else NA_real_
+  angle_deg      <- atan2(dy, dx) * 180 / pi
+  
+} else {
+  path_length <- NA_real_
+  net_disp <- NA_real_
+  directionality <- NA_real_
+  angle_deg <- NA_real_
+}
+
+
+
 
 # Compute metrics
 if (nrow(traj) >= 2) {

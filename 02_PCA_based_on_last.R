@@ -210,7 +210,7 @@ ggplot(scores, aes(x = PC1, y = PC2, label = `Country Name`)) +
 library(ggplot2)
 library(ggrepel)
 
-p <- ggplot(scores, aes(PC1, PC2)) +
+pplot <- ggplot(scores, aes(PC1, PC2)) +
   
   # --- Osy ---
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
@@ -257,12 +257,12 @@ p <- ggplot(scores, aes(PC1, PC2)) +
     panel.grid = element_blank()
   )
 
-print(p)
+print(pplot)
 
 
 
 # jak chtel Honza puntiky zpet
-p <- ggplot(scores, aes(PC1, PC2)) +
+pplot <- ggplot(scores, aes(PC1, PC2)) +
   
   # --- Osy ---
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
@@ -313,7 +313,7 @@ p <- ggplot(scores, aes(PC1, PC2)) +
     panel.grid = element_blank()
   )
 
-print(p)
+print(pplot)
 
 
 
@@ -322,7 +322,7 @@ print(p)
 #save at 400x400px, that looks nice
 ggsave(
   filename = "PCA.svg",
-  plot     = p,         # zde musí být objekt tvého PCA grafu
+  plot     = pplot,         # zde musí být objekt tvého PCA grafu
   device   = svglite,
   width    = 380/96,    # ≈ 4.17 in
   height   = 380/96,    # ≈ 4.17 in
@@ -407,7 +407,7 @@ ymin <- yr[1] - expand_y
 ymax <- yr[2] + expand_y
 
 # --- graf ---
-p <- ggplot(df, aes(PC1, PC2)) +
+pplot <- ggplot(df, aes(PC1, PC2)) +
   
   # vektory
   geom_segment(
@@ -461,7 +461,99 @@ p <- ggplot(df, aes(PC1, PC2)) +
     axis.title = element_blank()
   )
 
-p
+pplot
+
+
+# šipky 1barevné jak chtěl Honza
+
+library(ggplot2)
+library(data.table)
+library(dplyr)
+
+df <- as.data.table(loadings)
+
+# --- výpočet úhlů pro rotaci textu ---
+df[, raw_angle := atan2(PC2, PC1) * 180/pi]
+df[, angle2 := ifelse(cos(raw_angle*pi/180) >= 0, raw_angle, raw_angle + 180)]
+df[, hjust  := ifelse(cos(raw_angle*pi/180) >= 0, 0, 1)]
+
+# --- odsazení textu od konce vektoru ---
+df[, label_x := PC1 + 0.02 * sign(PC1)]
+df[, label_y := PC2 + 0.02 * sign(PC2)]
+
+# --- ořez grafu (jako předtím) ---
+xr <- range(df$label_x)
+yr <- range(df$label_y)
+expand_x <- diff(xr) * 0.15
+expand_y <- diff(yr) * 0.15
+
+xmin <- xr[1] - expand_x
+xmax <- xr[2] + expand_x
+ymin <- yr[1] - expand_y
+ymax <- yr[2] + expand_y
+
+# --- JEDNA BARVA ---
+arrow_col <- "#D45A6A"   # pastelová červená
+text_col  <- "black"
+
+pplot <- ggplot(df, aes(PC1, PC2)) +
+  
+  # vektory (šipky)
+  geom_segment(
+    aes(x = 0, y = 0, xend = PC1, yend = PC2),
+    color = arrow_col,
+    linewidth = 0.55,
+    alpha = 0.95,
+    arrow = arrow(type = "closed", length = unit(0.20, "cm"))
+  ) +
+  
+  # text indikátorů
+  geom_text(
+    aes(x = label_x, y = label_y,
+        label = indicator_translated,
+        angle = angle2,
+        hjust = hjust),
+    size = 3,
+    color = text_col
+  ) +
+  
+  # osy
+  geom_vline(xintercept = 0, linewidth = 0.45, color = "black") +
+  geom_hline(yintercept = 0, linewidth = 0.45, color = "black") +
+  
+  # popis PC1/PC2
+  annotate(
+    "text",
+    x = xmax * 0.98, y = 0,
+    label = "PC1",
+    size = 2.8,
+    hjust = 1,
+    vjust = -0.3
+  ) +
+  annotate(
+    "text",
+    x = 0, y = ymax * 0.98,
+    label = "PC2",
+    size = 2.8,
+    hjust = -0.3,
+    vjust = 1,
+    angle = 90
+  ) +
+  
+  coord_fixed(xlim = c(xmin, xmax),
+              ylim = c(ymin, ymax),
+              clip = "off") +
+  
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text  = element_blank(),
+    axis.title = element_blank()
+  )
+
+pplot
+
+
 
 
 library(svglite)
