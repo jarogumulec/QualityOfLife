@@ -8,7 +8,7 @@ library(ggrepel)
 library(viridis)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Bosnia and Herzegovina"   # e.g. "Czechia"
+country_to_plot <- "Czechia"   # e.g. "Czechia"
 years_win       <- 1995:2024
 ref_year        <- 2025              # PCA trained on ≤2024 data
 
@@ -283,7 +283,7 @@ p <- ggplot(traj, aes(PC1, PC2)) +
   # --- Popisky vybraných roků ---
   ggrepel::geom_text_repel(
     data = lab_df, aes(PC1, PC2, label = Year, color = Year),
-    size = 3, box.padding = 0.4, point.padding = 0.6,
+    size = 4, box.padding = 0.4, point.padding = 0.6,
     segment.size = 0.2, seed = 123
   ) +
   
@@ -295,40 +295,43 @@ p <- ggplot(traj, aes(PC1, PC2)) +
 #  subtitle = subtitle_lab
   ) +
   
-  theme_minimal(base_size = 11) +
+  theme_minimal(base_size = 15) +
   theme(
     panel.grid = element_blank(),
     axis.line = element_blank(),
-    axis.title = element_text(size = 10),
+    axis.title = element_text(size = 14),
     axis.text  = element_blank(),
-    plot.title = element_text(size = 10, face = "bold", hjust = 0),
-   plot.subtitle = element_text(size = 10, hjust = 0),
+    plot.title = element_text(size = 14, face = "bold", hjust = 0),
+   plot.subtitle = element_text(size = 14, hjust = 0),
     legend.position = "none"
   )
 
 p <- p +
-  annotate("text", x = -Inf, y = Inf, hjust = 0, vjust = 1,
+  annotate("text", x = -Inf, y = Inf, hjust = 0, vjust = 1.3,
            label = sprintf("%s", cz_country),
-           size = 3.3, fontface = "bold") +
-  annotate("text", x = Inf, y = Inf, hjust = 1, vjust = 1,
+           size = 5.3, fontface = "bold") +
+  annotate("text", x = Inf, y = Inf, hjust = 1, vjust = 1.3,
            label = sprintf("vzdálenost %.2f, přímočarost %.1f%%",
                            path_length, directionality_pct),
-           size = 3.3)
+           size = 5.3)
 
 
 print(p)
 
 
 #450x300
+
+
 ggsave(
   filename = file.path(out_dir, sprintf("trajectory_%s_%d_pc12_locf.svg",
                                         gsub("\\s+","_", cz_country), ref_year)),
   plot = p,
   device = "svg",
-  width = 320/72,   # 450 px při 72 dpi
-  height = 210/72,  # 300 px při 72 dpi
+  width = 620/72,   # 450 px při 72 dpi # 320x210
+  height = 420/72,  # 300 px při 72 dpi
   dpi = 72
 )
+
 
 
 
