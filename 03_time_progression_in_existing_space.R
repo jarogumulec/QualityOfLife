@@ -8,7 +8,7 @@ library(ggrepel)
 library(viridis)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Czechia"   # e.g. "Czechia"
+country_to_plot <- "Austria"   # e.g. "Czechia"
 years_win       <- 1995:2024
 ref_year        <- 2025              # PCA trained on ≤2024 data
 
