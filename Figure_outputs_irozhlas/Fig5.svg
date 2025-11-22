@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 620 481.26">
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 620 541.29">
   <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
   <defs>
     <style>
@@ -13,7 +13,7 @@
 
       .st3, .st5 {
         font-family: ArialMT, Arial;
-        font-size: 8px;
+        font-size: 10px;
       }
 
       .st6 {
@@ -31,13 +31,13 @@
         stroke-width: 1.17px;
       }
 
-      .st5 {
-        letter-spacing: .04em;
-      }
-
       .st1 {
         stroke: #000;
         stroke-width: .96px;
+      }
+
+      .st5 {
+        letter-spacing: .04em;
       }
 
       .st7 {
@@ -53,264 +53,264 @@
       }
     </style>
     <clipPath id="clippath">
-      <rect class="st0" x="19.42" width="596.17" height="480.17"/>
+      <rect class="st0" y="-.33" width="618.76" height="541.62"/>
     </clipPath>
     <clipPath id="clippath-1">
-      <rect class="st0" x="1.67" y="1.09" width="615.59" height="480.17"/>
+      <rect class="st0" y="-.33" width="618.76" height="541.62"/>
     </clipPath>
   </defs>
-  <rect class="st8" width="620" height="480.17"/>
+  <rect class="st8" y="-.33" width="618.76" height="541.62"/>
   <g class="st9">
-    <rect class="st8" width="620" height="480.17"/>
+    <rect class="st8" y="-.33" width="618.76" height="541.62"/>
   </g>
   <g class="st7">
     <g>
-      <line class="st1" x1="310.57" y1="491.97" x2="310.57" y2="-14.07"/>
-      <line class="st1" x1="100.28" y1="237.63" x2="524.91" y2="237.63"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="187.06" y2="226.99"/>
-      <polygon class="st6" points="193.37 224.05 187.06 226.99 192.77 230.98 193.37 224.05"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="177.75" y2="239.74"/>
-      <polygon class="st6" points="183.73 236.17 177.75 239.74 183.84 243.13 183.73 236.17"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="188.57" y2="278.94"/>
-      <polygon class="st6" points="193.17 273.71 188.57 278.94 195.4 280.3 193.17 273.71"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="188.47" y2="284.39"/>
-      <polygon class="st6" points="192.86 278.99 188.47 284.39 195.35 285.48 192.86 278.99"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="209.85" y2="199.47"/>
-      <polygon class="st6" points="216.71 198.36 209.85 199.47 214.25 204.87 216.71 198.36"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="236.42" y2="175.85"/>
-      <polygon class="st6" points="243.29 177.03 236.42 175.85 238.83 182.38 243.29 177.03"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="329.17" y2="260.27"/>
-      <polygon class="st6" points="322.66 257.83 329.17 260.27 328.04 253.41 322.66 257.83"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="263.91" y2="340.11"/>
-      <polygon class="st6" points="263.23 333.18 263.91 340.11 269.57 336.06 263.23 333.18"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="347.08" y2="216.79"/>
-      <polygon class="st6" points="343.56 222.81 347.08 216.79 340.11 216.75 343.56 222.81"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="332.05" y2="418.57"/>
-      <polygon class="st6" points="327.88 412.99 332.05 418.57 334.78 412.17 327.88 412.99"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="360.08" y2="208.55"/>
-      <polygon class="st6" points="356.64 214.6 360.08 208.55 353.12 208.6 356.64 214.6"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="175.45" y2="292.41"/>
-      <polygon class="st6" points="179.73 286.92 175.45 292.41 182.34 293.37 179.73 286.92"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="326" y2="269.81"/>
-      <polygon class="st6" points="320.26 265.88 326 269.81 326.53 262.87 320.26 265.88"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="311.27" y2="363.34"/>
-      <polygon class="st6" points="307.76 357.33 311.27 363.34 314.72 357.29 307.76 357.33"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="318.18" y2="248.37"/>
-      <polygon class="st6" points="311.86 245.47 318.18 248.37 317.53 241.45 311.86 245.47"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="300.79" y2="182.5"/>
-      <polygon class="st6" points="305.28 187.82 300.79 182.5 298.42 189.04 305.28 187.82"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="217.05" y2="182.86"/>
-      <polygon class="st6" points="224.01 182.9 217.05 182.86 220.5 188.91 224.01 182.9"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="271.24" y2="113.03"/>
-      <polygon class="st6" points="276.37 117.73 271.24 113.03 269.73 119.83 276.37 117.73"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="411.95" y2="151.24"/>
-      <polygon class="st6" points="409.63 157.81 411.95 151.24 405.11 152.5 409.63 157.81"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="183.38" y2="260.79"/>
-      <polygon class="st6" points="188.68 256.28 183.38 260.79 189.93 263.13 188.68 256.28"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="199.12" y2="207.94"/>
-      <polygon class="st6" points="205.85 206.12 199.12 207.94 204.05 212.85 205.85 206.12"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="422.01" y2="267.33"/>
-      <polygon class="st6" points="415.29 269.14 422.01 267.33 417.08 262.41 415.29 269.14"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="430.1" y2="284.44"/>
-      <polygon class="st6" points="423.21 285.48 430.1 284.44 425.75 279 423.21 285.48"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="420.34" y2="217.77"/>
-      <polygon class="st6" points="415.03 222.27 420.34 217.77 413.79 215.41 415.03 222.27"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="417.76" y2="168.6"/>
-      <polygon class="st6" points="414.58 174.8 417.76 168.6 410.81 168.95 414.58 174.8"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="287.07" y2="261.55"/>
-      <polygon class="st6" points="288.81 254.81 287.07 261.55 293.77 259.68 288.81 254.81"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="328.55" y2="172.69"/>
-      <polygon class="st6" points="330.29 179.43 328.55 172.69 323.59 177.57 330.29 179.43"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="387.85" y2="213.55"/>
-      <polygon class="st6" points="383.12 218.67 387.85 213.55 381.05 212.02 383.12 218.67"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="449.74" y2="234.07"/>
-      <polygon class="st6" points="443.8 237.7 449.74 234.07 443.62 230.74 443.8 237.7"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="286.94" y2="321.19"/>
-      <polygon class="st6" points="285.24 314.44 286.94 321.19 291.94 316.34 285.24 314.44"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="347.31" y2="72.82"/>
-      <polygon class="st6" points="349.4 79.46 347.31 72.82 342.59 77.94 349.4 79.46"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="274.83" y2="333.15"/>
-      <polygon class="st6" points="273.69 326.29 274.83 333.15 280.21 328.72 273.69 326.29"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="178.78" y2="251.28"/>
-      <polygon class="st6" points="184.42 247.19 178.78 251.28 185.13 254.12 184.42 247.19"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="274.13" y2="95.91"/>
-      <polygon class="st6" points="279 100.88 274.13 95.91 272.26 102.61 279 100.88"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="355.1" y2="366.06"/>
-      <polygon class="st6" points="349.83 361.51 355.1 366.06 356.41 359.22 349.83 361.51"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="280.09" y2="279.93"/>
-      <polygon class="st6" points="280.79 273.01 280.09 279.93 286.44 277.07 280.79 273.01"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="234.36" y2="254.95"/>
-      <polygon class="st6" points="239.46 250.23 234.36 254.95 241 257.02 239.46 250.23"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="355.94" y2="361.22"/>
-      <polygon class="st6" points="350.6 356.77 355.94 361.22 357.13 354.37 350.6 356.77"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="256.56" y2="90"/>
-      <polygon class="st6" points="261.89 94.47 256.56 90 255.36 96.86 261.89 94.47"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="365.34" y2="192.47"/>
-      <polygon class="st6" points="362.89 199 365.34 192.47 358.47 193.63 362.89 199"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="358.98" y2="199.72"/>
-      <polygon class="st6" points="356.37 206.18 358.98 199.72 352.07 200.7 356.37 206.18"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="217.06" y2="328.44"/>
-      <polygon class="st6" points="218.95 321.73 217.06 328.44 223.8 326.73 218.95 321.73"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="273.52" y2="197.78"/>
-      <polygon class="st6" points="280.18 199.83 273.52 197.78 275.08 204.57 280.18 199.83"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="389.31" y2="346.12"/>
-      <polygon class="st6" points="382.95 343.28 389.31 346.12 388.58 339.19 382.95 343.28"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="238.65" y2="77.88"/>
-      <polygon class="st6" points="244.3 81.95 238.65 77.88 237.95 84.81 244.3 81.95"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="236.73" y2="278.72"/>
-      <polygon class="st6" points="240.3 272.75 236.73 278.72 243.69 278.83 240.3 272.75"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="421.16" y2="288.96"/>
-      <polygon class="st6" points="414.22 289.57 421.16 288.96 417.16 283.26 414.22 289.57"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="415.94" y2="214.85"/>
-      <polygon class="st6" points="410.78 219.53 415.94 214.85 409.31 212.71 410.78 219.53"/>
-      <line class="st2" x1="310.57" y1="237.63" x2="285.16" y2="405.68"/>
-      <polygon class="st6" points="282.62 399.19 285.16 405.68 289.51 400.24 282.62 399.19"/>
+      <line class="st1" x1="309.97" y1="550.06" x2="309.97" y2="-6.02"/>
+      <line class="st1" x1="11.54" y1="270.56" x2="608.76" y2="270.65"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="174.25" y2="258.88"/>
+      <polygon class="st6" points="181.19 255.64 174.25 258.88 180.53 263.27 181.19 255.64"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="164.02" y2="272.89"/>
+      <polygon class="st6" points="170.59 268.96 164.02 272.89 170.72 276.61 170.59 268.96"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="175.91" y2="315.96"/>
+      <polygon class="st6" points="180.97 310.21 175.91 315.96 183.41 317.46 180.97 310.21"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="175.8" y2="321.95"/>
+      <polygon class="st6" points="180.62 316.01 175.8 321.95 183.36 323.15 180.62 316.01"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="199.3" y2="228.64"/>
+      <polygon class="st6" points="206.84 227.41 199.3 228.64 204.13 234.56 206.84 227.41"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="228.5" y2="202.68"/>
+      <polygon class="st6" points="236.04 203.97 228.5 202.68 231.14 209.86 236.04 203.97"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="330.42" y2="295.45"/>
+      <polygon class="st6" points="323.26 292.76 330.42 295.45 329.18 287.91 323.26 292.76"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="258.7" y2="383.19"/>
+      <polygon class="st6" points="257.95 375.56 258.7 383.19 264.92 378.73 257.95 375.56"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="350.09" y2="247.67"/>
+      <polygon class="st6" points="346.23 254.28 350.09 247.67 342.44 247.63 346.23 254.28"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="333.57" y2="469.4"/>
+      <polygon class="st6" points="329 463.27 333.57 469.4 336.58 462.37 329 463.27"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="364.38" y2="238.61"/>
+      <polygon class="st6" points="360.6 245.27 364.38 238.61 356.73 238.67 360.6 245.27"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="161.5" y2="330.76"/>
+      <polygon class="st6" points="166.2 324.73 161.5 330.76 169.07 331.82 166.2 324.73"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="326.94" y2="305.93"/>
+      <polygon class="st6" points="320.62 301.62 326.94 305.93 327.52 298.31 320.62 301.62"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="310.74" y2="408.7"/>
+      <polygon class="st6" points="306.88 402.11 310.74 408.7 314.53 402.06 306.88 402.11"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="318.34" y2="282.37"/>
+      <polygon class="st6" points="311.39 279.19 318.34 282.37 317.62 274.76 311.39 279.19"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="299.23" y2="209.99"/>
+      <polygon class="st6" points="304.16 215.84 299.23 209.99 296.63 217.17 304.16 215.84"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="207.2" y2="210.38"/>
+      <polygon class="st6" points="214.85 210.42 207.2 210.38 211 217.04 214.85 210.42"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="266.75" y2="133.64"/>
+      <polygon class="st6" points="272.39 138.81 266.75 133.64 265.09 141.12 272.39 138.81"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="421.38" y2="175.64"/>
+      <polygon class="st6" points="418.83 182.86 421.38 175.64 413.86 177.03 418.83 182.86"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="170.2" y2="296.02"/>
+      <polygon class="st6" points="176.03 291.06 170.2 296.02 177.41 298.59 176.03 291.06"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="187.5" y2="237.94"/>
+      <polygon class="st6" points="194.9 235.94 187.5 237.94 192.93 243.34 194.9 235.94"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="432.43" y2="303.21"/>
+      <polygon class="st6" points="425.05 305.19 432.43 303.21 427.02 297.8 425.05 305.19"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="441.32" y2="322.01"/>
+      <polygon class="st6" points="433.75 323.15 441.32 322.01 436.55 316.03 433.75 323.15"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="430.6" y2="248.75"/>
+      <polygon class="st6" points="424.77 253.69 430.6 248.75 423.4 246.16 424.77 253.69"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="427.76" y2="194.72"/>
+      <polygon class="st6" points="424.27 201.53 427.76 194.72 420.12 195.09 424.27 201.53"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="284.15" y2="296.85"/>
+      <polygon class="st6" points="286.06 289.44 284.15 296.85 291.51 294.8 286.06 289.44"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="329.73" y2="199.21"/>
+      <polygon class="st6" points="331.64 206.62 329.73 199.21 324.28 204.57 331.64 206.62"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="394.89" y2="244.1"/>
+      <polygon class="st6" points="389.7 249.73 394.89 244.1 387.43 242.43 389.7 249.73"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="462.9" y2="266.65"/>
+      <polygon class="st6" points="456.38 270.65 462.9 266.65 456.18 263 456.38 270.65"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="284.01" y2="362.39"/>
+      <polygon class="st6" points="282.14 354.97 284.01 362.39 289.5 357.06 282.14 354.97"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="350.35" y2="89.46"/>
+      <polygon class="st6" points="352.64 96.76 350.35 89.46 345.17 95.09 352.64 96.76"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="270.71" y2="375.54"/>
+      <polygon class="st6" points="269.45 367.99 270.71 375.54 276.62 370.66 269.45 367.99"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="165.16" y2="285.57"/>
+      <polygon class="st6" points="171.35 281.08 165.16 285.57 172.13 288.69 171.35 281.08"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="269.94" y2="114.83"/>
+      <polygon class="st6" points="275.28 120.3 269.94 114.83 267.87 122.2 275.28 120.3"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="358.9" y2="411.7"/>
+      <polygon class="st6" points="353.11 406.69 358.9 411.7 360.35 404.18 353.11 406.69"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="276.48" y2="317.05"/>
+      <polygon class="st6" points="277.25 309.44 276.48 317.05 283.46 313.91 277.25 309.44"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="226.23" y2="289.61"/>
+      <polygon class="st6" points="231.83 284.41 226.23 289.61 233.53 291.87 231.83 284.41"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="359.83" y2="406.38"/>
+      <polygon class="st6" points="353.96 401.48 359.83 406.38 361.14 398.85 353.96 401.48"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="250.63" y2="108.34"/>
+      <polygon class="st6" points="256.48 113.25 250.63 108.34 249.3 115.89 256.48 113.25"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="370.16" y2="220.95"/>
+      <polygon class="st6" points="367.47 228.11 370.16 220.95 362.61 222.22 367.47 228.11"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="363.17" y2="228.91"/>
+      <polygon class="st6" points="360.31 236.01 363.17 228.91 355.58 229.99 360.31 236.01"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="207.22" y2="370.35"/>
+      <polygon class="st6" points="209.3 362.99 207.22 370.35 214.63 368.48 209.3 362.99"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="269.26" y2="226.78"/>
+      <polygon class="st6" points="276.58 229.03 269.26 226.78 270.98 234.24 276.58 229.03"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="396.5" y2="389.79"/>
+      <polygon class="st6" points="389.51 386.67 396.5 389.79 395.7 382.17 389.51 386.67"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="230.94" y2="95.02"/>
+      <polygon class="st6" points="237.15 99.49 230.94 95.02 230.17 102.63 237.15 99.49"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="228.83" y2="315.72"/>
+      <polygon class="st6" points="232.76 309.16 228.83 315.72 236.49 315.84 232.76 309.16"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="431.5" y2="326.97"/>
+      <polygon class="st6" points="423.88 327.65 431.5 326.97 427.1 320.71 423.88 327.65"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="425.76" y2="245.54"/>
+      <polygon class="st6" points="420.1 250.68 425.76 245.54 418.48 243.19 420.1 250.68"/>
+      <line class="st2" x1="309.97" y1="270.57" x2="282.05" y2="455.23"/>
+      <polygon class="st6" points="279.26 448.11 282.05 455.23 286.83 449.25 279.26 448.11"/>
       <g class="st4">
-        <text class="st3" transform="translate(136.21 224.46) rotate(5)"><tspan x="0" y="0">HDP na obyv.</tspan></text>
+        <text class="st3" transform="translate(113.38 255.1) rotate(5)"><tspan x="0" y="0">HDP na obyv.</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(111.39 244.86) rotate(-1)"><tspan x="0" y="0">Kontrola korupce</tspan></text>
+        <text class="st3" transform="translate(87.1 279.51) rotate(-1)"><tspan x="0" y="0">Kontrola korupce</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(144.81 294.83) rotate(-19)"><tspan x="0" y="0">Délka života</tspan></text>
+        <text class="st3" transform="translate(128.83 329.43) rotate(-19)"><tspan x="0" y="0">Délka života</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(111.67 315.43) rotate(-21)"><tspan x="0" y="0">Výdaje na výzkum</tspan></text>
+        <text class="st3" transform="translate(100.41 349.06) rotate(-21)"><tspan x="0" y="0">Výdaje na výzkum</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(150.12 179.52) rotate(21)"><tspan x="0" y="0">High-tech export</tspan></text>
+        <text class="st3" transform="translate(128.66 203.72) rotate(21)"><tspan x="0" y="0">High-tech export</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(200.44 149.13) rotate(40)"><tspan x="0" y="0">VŠ vzdělání</tspan></text>
+        <text class="st3" transform="translate(184.96 168.31) rotate(40)"><tspan x="0" y="0">VŠ vzdělání</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(333.01 266.1) rotate(51)"><tspan x="0" y="0">Spotřeba alkoholu</tspan></text>
+        <text class="st3" transform="translate(334.64 301.86) rotate(51)"><tspan x="0" y="0">Spotřeba alkoholu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(240.56 398.01) rotate(-66)"><tspan x="0" y="0">Hustota osídlení</tspan></text>
+        <text class="st3" transform="translate(231.04 451.81) rotate(-66)"><tspan x="0" y="0">Hustota osídlení</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(364.77 211.18) rotate(-30)"><tspan x="0" y="0">Nezaměstnanost</tspan></text>
+        <text class="st3" transform="translate(369.54 241.5) rotate(-30)"><tspan x="0" y="0">Nezaměstnanost</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(330.8 422.32) rotate(83)"><tspan x="0" y="0">Sociál. odvody</tspan></text>
+        <text class="st3" transform="translate(332.2 473.52) rotate(83)"><tspan x="0" y="0">Sociál. odvody</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(362.03 221.23) rotate(-30)"><tspan x="0" y="0">Výdaje na obranu</tspan></text>
+        <text class="st3" transform="translate(366.53 252.55) rotate(-30)"><tspan x="0" y="0">Výdaje na obranu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(109.49 326.57) rotate(-22)"><tspan x="0" y="0">Kvalita infrastruktury</tspan></text>
+        <text class="st3" transform="translate(75.01 371.31) rotate(-22)"><tspan x="0" y="0">Kvalita infrastruktury</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(326.94 274.49) rotate(64)"><tspan x="0" y="0">Lesní plocha</tspan></text>
+        <text class="st3" transform="translate(327.96 311.08) rotate(64)"><tspan x="0" y="0">Lesní plocha</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(312.59 366.65) rotate(90)"><tspan x="0" y="0">Chráněná území</tspan></text>
+        <text class="st3" transform="translate(312.2 412.35) rotate(90)"><tspan x="0" y="0">Chráněná území</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(330.21 254) rotate(45)"><tspan x="0" y="0">GINI index</tspan></text>
+        <text class="st3" transform="translate(331.56 288.56) rotate(45)"><tspan x="0" y="0">GINI index</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(286.43 100.44) rotate(80)"><tspan x="0" y="0">Ženy v managementu</tspan></text>
+        <text class="st3" transform="translate(280.45 112.81) rotate(80)"><tspan x="0" y="0">Ženy v managementu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(156.38 150.79) rotate(30)"><tspan x="0" y="0">Ženy v parlamentu</tspan></text>
+        <text class="st3" transform="translate(133.54 170.14) rotate(30)"><tspan x="0" y="0">Ženy v parlamentu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(245.73 41.85) rotate(72)"><tspan x="0" y="0">Obnovitelná energie</tspan></text>
+        <text class="st3" transform="translate(236.22 47.92) rotate(72)"><tspan x="0" y="0">Obnovitelná energie</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(414.66 151.59) rotate(-40)"><tspan x="0" y="0">Práce v zemědělství</tspan></text>
+        <text class="st3" transform="translate(424.36 176.02) rotate(-40)"><tspan x="0" y="0">Práce v zemědělství</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(116.42 275.86) rotate(-10)"><tspan x="0" y="0">Práce ve službách</tspan></text>
+        <text class="st3" transform="translate(88.63 313.58) rotate(-10)"><tspan x="0" y="0">Práce ve službách</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(132.73 192.52) rotate(15)"><tspan x="0" y="0">Městská populace</tspan></text>
+        <text class="st3" transform="translate(107.55 218) rotate(15)"><tspan x="0" y="0">Městská populace</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(424.86 271.65) rotate(15)"><tspan x="0" y="0">Venkovská populace</tspan></text>
+        <text class="st3" transform="translate(436.56 306.96) rotate(15)"><tspan x="0" y="0">Venkovská populace</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(433.26 287.69) rotate(21)"><tspan x="0" y="0">Znečištění ovzduší</tspan></text>
+        <text class="st3" transform="translate(444.8 325.58) rotate(21)"><tspan x="0" y="0">Znečištění ovzduší</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(424.67 220.76) rotate(-10)"><tspan x="0" y="0">Úmrtnost v dopravě</tspan></text>
+        <text class="st3" transform="translate(435.36 252.03) rotate(-10)"><tspan x="0" y="0">Úmrtnost v dopravě</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(423.35 168.24) rotate(-33)"><tspan x="0" y="0">Příjmy ze zahraničí</tspan></text>
+        <text class="st3" transform="translate(433.9 194.31) rotate(-33)"><tspan x="0" y="0">Příjmy ze zahraničí</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(263.77 280.13) rotate(-45)"><tspan x="0" y="0">Export</tspan></text>
+        <text class="st3" transform="translate(258.55 317.27) rotate(-45)"><tspan x="0" y="0">Export</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(334.18 171.6) rotate(-75)"><tspan x="0" y="0">Plodnost</tspan></text>
+        <text class="st3" transform="translate(335.92 198.01) rotate(-75)"><tspan x="0" y="0">Plodnost</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(391.76 215.06) rotate(-17)"><tspan x="0" y="0">Index míru</tspan></text>
+        <text class="st3" transform="translate(399.19 245.76) rotate(-17)"><tspan x="0" y="0">Index míru</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(455.95 233.76) rotate(-1)"><tspan x="0" y="0">Index pozitivního míru</tspan></text>
+        <text class="st3" transform="translate(467.73 267.32) rotate(-1)"><tspan x="0" y="0">Index pozitivního míru</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(273.82 380.74) rotate(-74)"><tspan x="0" y="0">Index terorismu</tspan></text>
+        <text class="st3" transform="translate(268.59 430.83) rotate(-74)"><tspan x="0" y="0">Index terorismu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(352.14 69.42) rotate(-77)"><tspan x="0" y="0">Ekologická rizika</tspan></text>
+        <text class="st3" transform="translate(355.65 85.73) rotate(-77)"><tspan x="0" y="0">Ekologická rizika</tspan></text>
       </g>
       <g class="st4">
-        <text class="st5" transform="translate(264.55 375.63) rotate(-69)"><tspan x="0" y="0">Dluh/HDP</tspan></text>
+        <text class="st5" transform="translate(259.4 422.21) rotate(-69)"><tspan x="0" y="0">Dluh/HDP</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(127.54 259.64) rotate(-6)"><tspan x="0" y="0">LGBT rovnost</tspan></text>
+        <text class="st3" transform="translate(102.84 294.75) rotate(-6)"><tspan x="0" y="0">LGBT rovnost</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(257.48 29.4) rotate(76)"><tspan x="0" y="0">Poč. sex. partnerů</tspan></text>
+        <text class="st3" transform="translate(247.87 33.4) rotate(76)"><tspan x="0" y="0">Poč. sex. partnerů</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(348.37 371.7) rotate(71)"><tspan x="0" y="0">Věk ztráty panenství</tspan></text>
+        <text class="st3" transform="translate(351.51 417.9) rotate(71)"><tspan x="0" y="0">Věk ztráty panenství</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(242.86 334.58) rotate(-54)"><tspan x="0" y="0">Index promiskuity</tspan></text>
+        <text class="st3" transform="translate(232.57 382.1) rotate(-54)"><tspan x="0" y="0">Index promiskuity</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(161.39 275.73) rotate(-13)"><tspan x="0" y="0">Spotřeba marihuany</tspan></text>
+        <text class="st3" transform="translate(138.04 314.43) rotate(-13)"><tspan x="0" y="0">Spotřeba marihuany</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(357.42 366.65) rotate(70)"><tspan x="0" y="0">Nízká důvěra ve vládu</tspan></text>
+        <text class="st3" transform="translate(361.45 412.35) rotate(70)"><tspan x="0" y="0">Nízká důvěra ve vládu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(223.26 8.47) rotate(70)"><tspan x="0" y="0">Vysoká důvěra ve vládu</tspan></text>
+        <text class="st3" transform="translate(209.36 7.64) rotate(70)"><tspan x="0" y="0">Vysoká důvěra ve vládu</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(356.94 192.82) rotate(-40)"><tspan x="0" y="0">Křesťané</tspan></text>
+        <text class="st3" transform="translate(360.93 221.32) rotate(-40)"><tspan x="0" y="0">Křesťané</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(372.03 196.38) rotate(-38)"><tspan x="0" y="0">Muslimové</tspan></text>
+        <text class="st3" transform="translate(377.51 225.24) rotate(-38)"><tspan x="0" y="0">Muslimové</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(184.58 362.97) rotate(-44)"><tspan x="0" y="0">Bez vyznání</tspan></text>
+        <text class="st3" transform="translate(168.53 411.3) rotate(-44)"><tspan x="0" y="0">Bez vyznání</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(246.25 172.14) rotate(47)"><tspan x="0" y="0">Hinduisté</tspan></text>
+        <text class="st3" transform="translate(238.29 196.6) rotate(47)"><tspan x="0" y="0">Hinduisté</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(389.18 350.5) rotate(54)"><tspan x="0" y="0">Bydlení bez hypotéky</tspan></text>
+        <text class="st3" transform="translate(396.36 394.6) rotate(54)"><tspan x="0" y="0">Bydlení bez hypotéky</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(205.29 8.71) rotate(66)"><tspan x="0" y="0">Bydlení s hypotékou</tspan></text>
+        <text class="st3" transform="translate(189.96 12.64) rotate(66)"><tspan x="0" y="0">Bydlení s hypotékou</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(175.97 314.15) rotate(-29)"><tspan x="0" y="0">Sportovní úspěchy</tspan></text>
+        <text class="st3" transform="translate(156.07 359.65) rotate(-29)"><tspan x="0" y="0">Sportovní úspěchy</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(424.85 296.31) rotate(25)"><tspan x="0" y="0">Cena nemovitostí/příjem</tspan></text>
+        <text class="st3" transform="translate(435.55 335.06) rotate(25)"><tspan x="0" y="0">Cena nemovitostí/příjem</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(417.31 213.91) rotate(-12)"><tspan x="0" y="0">Svoboda tisku</tspan></text>
+        <text class="st3" transform="translate(427.27 244.51) rotate(-12)"><tspan x="0" y="0">Svoboda tisku</tspan></text>
       </g>
       <g class="st4">
-        <text class="st3" transform="translate(278.62 463.92) rotate(-81)"><tspan x="0" y="0">Sociální výdaje</tspan></text>
+        <text class="st3" transform="translate(272.87 525.24) rotate(-81)"><tspan x="0" y="0">Sociální výdaje</tspan></text>
       </g>
     </g>
   </g>
