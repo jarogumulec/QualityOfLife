@@ -7,73 +7,81 @@
         fill: none;
       }
 
-      .st2, .st3, .st4, .st5 {
+      .st2, .st3, .st4, .st5, .st6 {
         isolation: isolate;
       }
 
-      .st2, .st3, .st5 {
+      .st2, .st4, .st6 {
         font-family: ArialMT, Arial;
         font-size: 8.54px;
       }
 
-      .st2, .st6 {
-        fill: #76a881;
+      .st2, .st7 {
+        fill: #c44e52;
       }
 
-      .st7, .st1, .st8, .st6, .st9 {
+      .st8 {
+        stroke: #55a868;
+      }
+
+      .st8, .st1, .st7, .st9, .st10 {
         stroke-linejoin: round;
       }
 
-      .st7, .st8, .st6, .st9 {
+      .st8, .st4 {
+        fill: #43a859;
+      }
+
+      .st8, .st7, .st9, .st10 {
         stroke-linecap: round;
         stroke-width: .71px;
       }
 
-      .st7, .st5 {
-        fill: #7b8fb0;
-      }
-
-      .st7, .st9 {
-        stroke: #4c72b0;
-      }
-
       .st1 {
         stroke: #000;
-        stroke-width: .85px;
-      }
-
-      .st10 {
-        clip-path: url(#clippath-1);
+        stroke-width: .5px;
       }
 
       .st11 {
-        fill: #fff;
-      }
-
-      .st3, .st8 {
-        fill: #c4898b;
-      }
-
-      .st8 {
-        stroke: #c44e52;
-      }
-
-      .st4 {
-        font-family: Arial-BoldMT, Arial;
-        font-size: 12px;
-        font-weight: 700;
-      }
-
-      .st4, .st9 {
-        fill: #466eb0;
+        clip-path: url(#clippath-1);
       }
 
       .st12 {
+        fill: #fff;
+      }
+
+      .st5 {
+        font-size: 12px;
+      }
+
+      .st5, .st13 {
+        font-family: Arial-BoldMT, Arial;
+        font-weight: 700;
+      }
+
+      .st5, .st10 {
+        fill: #335182;
+      }
+
+      .st7 {
+        stroke: #c44e52;
+      }
+
+      .st13 {
+        fill: #d9d9d9;
+        font-size: 10px;
+      }
+
+      .st6, .st9 {
+        fill: #466eb0;
+      }
+
+      .st14 {
         clip-path: url(#clippath);
       }
 
-      .st6 {
-        stroke: #55a868;
+      .st9, .st10 {
+        stroke: #4c72b0;
       }
     </style>
     <clipPath id="clippath">
@@ -83,94 +91,184 @@
       <rect class="st0" x="5.48" y="5.48" width="454.04" height="334.04"/>
     </clipPath>
   </defs>
-  <rect class="st11" y="0" width="465" height="345"/>
-  <g class="st12">
-    <rect class="st11" y="0" width="465" height="345"/>
+  <rect class="st12" y="0" width="465" height="345"/>
+  <g class="st14">
+    <rect class="st12" y="0" width="465" height="345"/>
   </g>
-  <g class="st10">
+  <g class="st11">
     <g>
-      <line class="st1" x1="214.63" y1="339.52" x2="214.63" y2="5.48"/>
-      <line class="st1" x1="5.48" y1="175.07" x2="459.52" y2="175.07"/>
-      <circle class="st6" cx="386.38" cy="109.54" r="1.95"/>
-      <circle class="st7" cx="167.26" cy="233.46" r="1.95"/>
-      <circle class="st6" cx="369.31" cy="131.81" r="1.95"/>
-      <circle class="st7" cx="59.95" cy="195.04" r="1.95"/>
-      <circle class="st6" cx="438.88" cy="152.14" r="1.95"/>
-      <circle class="st7" cx="297.75" cy="162.79" r="1.95"/>
-      <circle class="st8" cx="69.09" cy="132.19" r="1.95"/>
-      <circle class="st7" cx="291.48" cy="175.25" r="1.95"/>
-      <circle class="st9" cx="207.51" cy="323.11" r="1.95"/>
-      <circle class="st7" cx="56.5" cy="94.91" r="1.95"/>
-      <circle class="st7" cx="186.2" cy="203.47" r="1.95"/>
-      <circle class="st7" cx="70.62" cy="131.94" r="1.95"/>
-      <circle class="st7" cx="140.93" cy="263.98" r="1.95"/>
-      <circle class="st8" cx="425.72" cy="83.75" r="1.95"/>
-      <circle class="st7" cx="104.67" cy="324.34" r="1.95"/>
-      <circle class="st7" cx="255.01" cy="255.8" r="1.95"/>
-      <circle class="st7" cx="293.55" cy="196.14" r="1.95"/>
-      <circle class="st6" cx="26.12" cy="20.66" r="1.95"/>
-      <circle class="st7" cx="105.72" cy="100.97" r="1.95"/>
-      <circle class="st7" cx="196.63" cy="278.98" r="1.95"/>
-      <circle class="st7" cx="269.36" cy="191.57" r="1.95"/>
-      <circle class="st7" cx="250.3" cy="171.32" r="1.95"/>
-      <circle class="st6" cx="438.26" cy="85.33" r="1.95"/>
-      <circle class="st6" cx="330.63" cy="146.65" r="1.95"/>
-      <circle class="st7" cx="27.65" cy="214.63" r="1.95"/>
-      <circle class="st8" cx="80.61" cy="98.97" r="1.95"/>
-      <circle class="st6" cx="44.65" cy="55.66" r="1.95"/>
-      <circle class="st7" cx="304.94" cy="246.99" r="1.95"/>
-      <circle class="st7" cx="203.22" cy="204.41" r="1.95"/>
-      <circle class="st7" cx="356.78" cy="146.58" r="1.95"/>
-      <circle class="st8" cx="379.21" cy="146.96" r="1.95"/>
-      <circle class="st6" cx="381.01" cy="149.19" r="1.95"/>
-      <circle class="st7" cx="297.3" cy="271.84" r="1.95"/>
-      <circle class="st7" cx="230.35" cy="279.68" r="1.95"/>
-      <circle class="st7" cx="150.37" cy="249.66" r="1.95"/>
-      <circle class="st7" cx="49.38" cy="77.72" r="1.95"/>
-      <circle class="st6" cx="61.62" cy="180.08" r="1.95"/>
-      <circle class="st6" cx="384.23" cy="153.45" r="1.95"/>
-      <circle class="st6" cx="94.27" cy="196.86" r="1.95"/>
-      <circle class="st8" cx="101.83" cy="165.01" r="1.95"/>
-      <text class="st2" transform="translate(362.7 119.53)"><tspan x="0" y="0">Albánie</tspan></text>
-      <text class="st5" transform="translate(160.09 229.56)"><tspan x="0" y="0">Rakusko</tspan></text>
-      <text class="st2" transform="translate(318.98 131.2)"><tspan x="0" y="0">Bělorusko</tspan></text>
-      <text class="st5" transform="translate(38.64 191.15)"><tspan x="0" y="0">Belgie</tspan></text>
-      <text class="st2" transform="translate(417.34 162.15)"><tspan x="0" y="0">Bosna</tspan></text>
-      <text class="st5" transform="translate(288.2 158.9)"><tspan x="0" y="0">Bulharsko</tspan></text>
-      <text class="st3" transform="translate(36.79 138.64)"><tspan x="0" y="0">Kanada</tspan></text>
-      <text class="st5" transform="translate(295.71 172.78)"><tspan x="0" y="0">Chorvatsko</tspan></text>
-      <text class="st4" transform="translate(165.49 327.19)"><tspan x="0" y="0">Česko</tspan></text>
-      <text class="st5" transform="translate(32.57 91.02)"><tspan x="0" y="0">Dánsko</tspan></text>
-      <text class="st5" transform="translate(158.28 199.57)"><tspan x="0" y="0">Estonsko</tspan></text>
-      <text class="st5" transform="translate(67.47 128.06)"><tspan x="0" y="0">Finsko</tspan></text>
-      <text class="st5" transform="translate(117.25 273.98)"><tspan x="0" y="0">Francie</tspan></text>
-      <text class="st3" transform="translate(403.69 79.86)"><tspan x="0" y="0">Gruzie</tspan></text>
-      <text class="st5" transform="translate(77.21 334.34)"><tspan x="0" y="0">Německo</tspan></text>
-      <text class="st5" transform="translate(234.81 264.81)"><tspan x="0" y="0">Řecko</tspan></text>
-      <text class="st5" transform="translate(283.99 206.14)"><tspan x="0" y="0">Maďarsko</tspan></text>
-      <text class="st2" transform="translate(8.37 30.66)"><tspan x="0" y="0">Island</tspan></text>
-      <text class="st5" transform="translate(109.5 110.73)"><tspan x="0" y="0">Irsko</tspan></text>
-      <text class="st5" transform="translate(178.17 288.98)"><tspan x="0" y="0">Itálie</tspan></text>
-      <text class="st5" transform="translate(243.06 187.69)"><tspan x="0" y="0">Lotyšsko</tspan></text>
-      <text class="st5" transform="translate(228.02 172.8)"><tspan x="0" y="0">Litva</tspan></text>
-      <text class="st2" transform="translate(422.47 95.34)"><tspan x="0" y="0">Moldávie</tspan></text>
-      <text class="st2" transform="translate(282.62 143.08)"><tspan x="0" y="0">Černá Hora</tspan></text>
-      <text class="st5" transform="translate(31.88 219.27)"><tspan x="0" y="0">Nizozemsko</tspan></text>
-      <text class="st3" transform="translate(47.2 108.98)"><tspan x="0" y="0">Nový Zéland</tspan></text>
-      <text class="st2" transform="translate(15.93 65.65)"><tspan x="0" y="0">Norsko</tspan></text>
-      <text class="st5" transform="translate(275.07 256.08)"><tspan x="0" y="0">Polsko</tspan></text>
-      <text class="st5" transform="translate(191.58 214.41)"><tspan x="0" y="0">Portugalsko</tspan></text>
-      <text class="st5" transform="translate(331.93 156.64)"><tspan x="0" y="0">Rumunsko</tspan></text>
-      <text class="st3" transform="translate(360.7 143.07)"><tspan x="0" y="0">Rusko</tspan></text>
-      <text class="st2" transform="translate(384.59 162.92)"><tspan x="0" y="0">Srbsko</tspan></text>
-      <text class="st5" transform="translate(297.3 267.96)"><tspan x="0" y="0">Slovensko</tspan></text>
-      <text class="st5" transform="translate(220.32 276.68)"><tspan x="0" y="0">Slovinsko</tspan></text>
-      <text class="st5" transform="translate(139.88 245.77)"><tspan x="0" y="0">Španělsko</tspan></text>
-      <text class="st5" transform="translate(48.73 73.83)"><tspan x="0" y="0">Švédsko</tspan></text>
-      <text class="st2" transform="translate(67.17 185.04)"><tspan x="0" y="0">Švýcarsko</tspan></text>
-      <text class="st2" transform="translate(385.59 148.53)"><tspan x="0" y="0">Ukrajina</tspan></text>
-      <text class="st2" transform="translate(79.84 206.86)"><tspan x="0" y="0">Velká Británie</tspan></text>
-      <text class="st3" transform="translate(82.69 161.13)"><tspan x="0" y="0">Spojené Státy</tspan></text>
+      <g>
+        <line class="st1" x1="214.63" y1="338.92" x2="214.63" y2="6.08"/>
+        <path d="M217.15,335.71c0-.08-.04-.16-.12-.21-.12-.07-.27-.04-.35.08l-2.05,3.23-2.05-3.23c-.07-.12-.23-.15-.35-.08-.12.07-.15.23-.08.35l2.27,3.56c.05.07.13.12.21.12s.17-.04.21-.12l2.27-3.56s.04-.09.04-.13c0-.08,0,.05,0,0Z"/>
+        <path d="M217.15,9.29c0,.08-.04.16-.12.21-.12.07-.27.04-.35-.08l-2.05-3.23-2.05,3.23c-.07.12-.23.15-.35.08s-.15-.23-.08-.35l2.27-3.56c.05-.07.13-.12.21-.12s.17.04.21.12l2.27,3.56s.04.09.04.13c0,.08,0-.05,0,0Z"/>
+      </g>
+      <g>
+        <line class="st1" x1="6.08" y1="175.07" x2="458.92" y2="175.07"/>
+        <path d="M9.29,177.59c.08,0,.16-.04.21-.12.07-.12.04-.27-.08-.35l-3.23-2.05,3.23-2.05c.12-.07.15-.23.08-.35s-.23-.15-.35-.08l-3.56,2.27c-.07.05-.12.13-.12.21s.04.17.12.21l3.56,2.27s.09.04.13.04c.08,0-.05,0,0,0Z"/>
+        <path d="M455.71,177.59c-.08,0-.16-.04-.21-.12-.07-.12-.04-.27.08-.35l3.23-2.05-3.23-2.05c-.12-.07-.15-.23-.08-.35s.23-.15.35-.08l3.56,2.27c.07.05.12.13.12.21s-.04.17-.12.21l-3.56,2.27s-.09.04-.13.04c-.08,0,.05,0,0,0Z"/>
+      </g>
+      <circle class="st8" cx="386.38" cy="109.54" r="1.95"/>
+      <circle class="st9" cx="167.26" cy="233.46" r="1.95"/>
+      <circle class="st8" cx="369.31" cy="131.81" r="1.95"/>
+      <circle class="st9" cx="59.95" cy="195.04" r="1.95"/>
+      <circle class="st8" cx="438.88" cy="152.14" r="1.95"/>
+      <circle class="st9" cx="297.75" cy="162.79" r="1.95"/>
+      <circle class="st7" cx="69.09" cy="132.19" r="1.95"/>
+      <circle class="st9" cx="291.48" cy="175.25" r="1.95"/>
+      <circle class="st10" cx="207.51" cy="323.11" r="1.95"/>
+      <circle class="st9" cx="56.5" cy="94.91" r="1.95"/>
+      <circle class="st9" cx="186.2" cy="203.47" r="1.95"/>
+      <circle class="st9" cx="70.62" cy="131.94" r="1.95"/>
+      <circle class="st9" cx="140.93" cy="263.98" r="1.95"/>
+      <circle class="st7" cx="425.72" cy="83.75" r="1.95"/>
+      <circle class="st9" cx="104.67" cy="324.34" r="1.95"/>
+      <circle class="st9" cx="255.01" cy="255.8" r="1.95"/>
+      <circle class="st9" cx="293.55" cy="196.14" r="1.95"/>
+      <circle class="st8" cx="26.12" cy="20.66" r="1.95"/>
+      <circle class="st9" cx="105.72" cy="100.97" r="1.95"/>
+      <circle class="st9" cx="196.63" cy="278.98" r="1.95"/>
+      <circle class="st9" cx="269.36" cy="191.57" r="1.95"/>
+      <circle class="st9" cx="250.3" cy="171.32" r="1.95"/>
+      <circle class="st8" cx="438.26" cy="85.33" r="1.95"/>
+      <circle class="st8" cx="330.63" cy="146.65" r="1.95"/>
+      <circle class="st9" cx="27.65" cy="214.63" r="1.95"/>
+      <circle class="st7" cx="80.61" cy="98.97" r="1.95"/>
+      <circle class="st8" cx="44.65" cy="55.66" r="1.95"/>
+      <circle class="st9" cx="304.94" cy="246.99" r="1.95"/>
+      <circle class="st9" cx="203.22" cy="204.41" r="1.95"/>
+      <circle class="st9" cx="356.78" cy="146.58" r="1.95"/>
+      <circle class="st7" cx="379.21" cy="146.96" r="1.95"/>
+      <circle class="st8" cx="381.01" cy="149.19" r="1.95"/>
+      <circle class="st9" cx="297.3" cy="271.84" r="1.95"/>
+      <circle class="st9" cx="230.35" cy="279.68" r="1.95"/>
+      <circle class="st9" cx="150.37" cy="249.66" r="1.95"/>
+      <circle class="st9" cx="49.38" cy="77.72" r="1.95"/>
+      <circle class="st8" cx="61.62" cy="180.08" r="1.95"/>
+      <circle class="st8" cx="384.23" cy="153.45" r="1.95"/>
+      <circle class="st8" cx="94.27" cy="196.86" r="1.95"/>
+      <circle class="st7" cx="101.83" cy="165.01" r="1.95"/>
+      <g class="st3">
+        <text class="st4" transform="translate(362.7 119.53)"><tspan x="0" y="0">Albánie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(160.09 229.56)"><tspan x="0" y="0">Rakusko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(318.98 131.2)"><tspan x="0" y="0">Bělorusko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(38.64 191.15)"><tspan x="0" y="0">Belgie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(417.34 162.15)"><tspan x="0" y="0">Bosna</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(288.2 158.9)"><tspan x="0" y="0">Bulharsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st2" transform="translate(36.79 138.64)"><tspan x="0" y="0">Kanada</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(295.71 172.78)"><tspan x="0" y="0">Chorvatsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st5" transform="translate(165.49 327.19)"><tspan x="0" y="0">Česko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(32.57 91.02)"><tspan x="0" y="0">Dánsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(158.28 199.57)"><tspan x="0" y="0">Estonsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(67.47 128.06)"><tspan x="0" y="0">Finsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(117.25 273.98)"><tspan x="0" y="0">Francie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st2" transform="translate(403.69 79.86)"><tspan x="0" y="0">Gruzie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(77.21 334.34)"><tspan x="0" y="0">Německo</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(234.81 264.81)"><tspan x="0" y="0">Řecko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(283.99 206.14)"><tspan x="0" y="0">Maďarsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(8.37 30.66)"><tspan x="0" y="0">Island</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(109.5 110.73)"><tspan x="0" y="0">Irsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(178.17 288.98)"><tspan x="0" y="0">Itálie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(243.06 187.69)"><tspan x="0" y="0">Lotyšsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(228.02 172.8)"><tspan x="0" y="0">Litva</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(422.47 95.34)"><tspan x="0" y="0">Moldávie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(282.62 143.08)"><tspan x="0" y="0">Černá Hora</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(31.88 219.27)"><tspan x="0" y="0">Nizozemsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st2" transform="translate(47.2 108.98)"><tspan x="0" y="0">Nový Zéland</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(15.93 65.65)"><tspan x="0" y="0">Norsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(275.07 256.08)"><tspan x="0" y="0">Polsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(191.58 214.41)"><tspan x="0" y="0">Portugalsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(331.93 156.64)"><tspan x="0" y="0">Rumunsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st2" transform="translate(360.7 143.07)"><tspan x="0" y="0">Rusko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(384.59 162.92)"><tspan x="0" y="0">Srbsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(297.3 267.96)"><tspan x="0" y="0">Slovensko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(220.32 276.68)"><tspan x="0" y="0">Slovinsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(139.88 245.77)"><tspan x="0" y="0">Španělsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st6" transform="translate(48.73 73.83)"><tspan x="0" y="0">Švédsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(67.17 185.04)"><tspan x="0" y="0">Švýcarsko</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(385.59 148.53)"><tspan x="0" y="0">Ukrajina</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st4" transform="translate(79.84 206.86)"><tspan x="0" y="0">Velká Británie</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st2" transform="translate(82.69 161.13)"><tspan x="0" y="0">Spojené Státy</tspan></text>
+      </g>
     </g>
   </g>
+  <text class="st13" transform="translate(307.72 188.69)"><tspan x="0" y="0">urbanizačně-rozvojový gradient</tspan></text>
+  <text class="st13" transform="translate(207.64 162.73) rotate(-90)"><tspan x="0" y="0">sociálně-enviromentální gradient</tspan></text>
 </svg>
