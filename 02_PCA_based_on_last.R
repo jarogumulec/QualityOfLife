@@ -269,7 +269,7 @@ pplot <- ggplot(scores, aes(PC1, PC2)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   
   # --- Puntíky států ---
-  geom_point(aes(color = Region), size = 2.2, show.legend = FALSE) +
+  geom_point(aes(color = Region), size = 1.5, show.legend = FALSE) +
   
   # --- Kompromisní text: malé odskočení, povolený mírný překryv ---
   geom_text_repel(
@@ -324,8 +324,8 @@ ggsave(
   filename = "PCA.svg",
   plot     = pplot,         # zde musí být objekt tvého PCA grafu
   device   = svglite,
-  width    = 380/96,    # ≈ 4.17 in
-  height   = 380/96,    # ≈ 4.17 in
+  width    = 620/96,    # ≈ 4.17 in
+  height   = 460/96,    # ≈ 4.17 in
   units    = "in"
 )
 
