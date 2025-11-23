@@ -8,9 +8,9 @@ library(ggrepel)
 library(viridis)
 
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Germany"   # e.g. "Czechia"
+country_to_plot <- "Sweden"   # e.g. "Czechia"
 years_win       <- 1995:2024
-ref_year        <- 2025              # PCA trained on ≤2024 data
+ref_year        <- 2025              # PCA trained on ≤2024 data 
 
 infile_data <- "qualityoflife_merged.csv"
 pca_dir     <- "PCAmodel"
@@ -271,7 +271,9 @@ p <- ggplot(traj, aes(PC1, PC2)) +
   # --- Osy ---
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
-  
+  coord_cartesian(xlim = c(-5.5, 7.3), # 7.5 max rusko ok 
+                 ylim = c(-5, 5.5)) + # 5.4 5.4 ok
+
   # --- Pozadí ostatních států ---
   bg_layer +
   
@@ -323,7 +325,7 @@ print(p)
 
 
 ggsave(
-  filename = file.path(out_dir, sprintf("trajectory_%s_%d_pc12_locf.svg",
+  filename = file.path(out_dir, sprintf("Fig6_%s_%d.svg",
                                         gsub("\\s+","_", cz_country), ref_year)),
   plot = p,
   device = "svg",
