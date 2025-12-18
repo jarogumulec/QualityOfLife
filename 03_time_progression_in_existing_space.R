@@ -7,8 +7,9 @@ library(ggplot2)
 library(ggrepel)
 library(viridis)
 
+
 # =================== USER PARAMETERS ===================
-country_to_plot <- "Sweden"   # e.g. "Czechia"
+country_to_plot <- "Iceland"   # e.g. "Czechia"
 years_win       <- 1995:2024
 ref_year        <- 2025              # PCA trained on ≤2024 data 
 
@@ -272,7 +273,8 @@ p <- ggplot(traj, aes(PC1, PC2)) +
   geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
   geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
   coord_cartesian(xlim = c(-5.5, 7.3), # 7.5 max rusko ok 
-                 ylim = c(-5, 5.5)) + # 5.4 5.4 ok
+                 ylim = c(-5, 5.5)
+                 ) + # 5.4 5.4 ok
 
   # --- Pozadí ostatních států ---
   bg_layer +
