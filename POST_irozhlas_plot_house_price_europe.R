@@ -7,7 +7,7 @@ httpgd::hgd_browse()
 
 dt <- fread("qualityoflife_merged.csv")
 
-european_countries <- c("Austria", "Czech Republic", "Czechia", "Germany", "Hungary", "Poland", "Slovak Republic")
+european_countries <- c("Italy", "Czechia", "Germany")
 
 dt_europe <- dt[Country %in% european_countries & !is.na(`House_Price To Income Ratio`)]
 dt_europe[, `House_Price To Income Ratio` := as.numeric(`House_Price To Income Ratio`)]
@@ -91,4 +91,32 @@ p6 <- ggplot(dt_debt, aes(x = Year, y = `debt_to_GDP`,
   labs(title = "Debt to GDP - Evropa", x = "Rok", y = "%") +
   theme_minimal()
 print(p6)
+
+# Unemployment
+dt_unemp <- dt[Country %in% european_countries & !is.na(`Unemployment`)]
+dt_unemp[, `Unemployment` := as.numeric(`Unemployment`)]
+dt_unemp[, Year := as.numeric(Year)]
+dt_unemp <- dt_unemp[!is.na(`Unemployment`) & !is.na(Year)]
+
+p7 <- ggplot(dt_unemp, aes(x = Year, y = `Unemployment`, 
+                           color = Country, group = Country)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 1.5) +
+  labs(title = "Unemployment - Evropa", x = "Rok", y = "%") +
+  theme_minimal()
+print(p7)
+
+# Fertility
+dt_fert <- dt[Country %in% european_countries & !is.na(`Fertility`)]
+dt_fert[, `Fertility` := as.numeric(`Fertility`)]
+dt_fert[, Year := as.numeric(Year)]
+dt_fert <- dt_fert[!is.na(`Fertility`) & !is.na(Year)]
+
+p8 <- ggplot(dt_fert, aes(x = Year, y = `Fertility`, 
+                          color = Country, group = Country)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 1.5) +
+  labs(title = "Fertility Rate - Evropa", x = "Rok", y = "Births per woman") +
+  theme_minimal()
+print(p8)
 
