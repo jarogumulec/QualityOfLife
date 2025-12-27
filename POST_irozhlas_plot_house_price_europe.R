@@ -117,6 +117,8 @@ p8 <- ggplot(dt_fert, aes(x = Year, y = `Fertility`,
   geom_line(linewidth = 0.8) +
   geom_point(size = 1.5) +
   labs(title = "Fertility Rate - Evropa", x = "Rok", y = "Births per woman") +
+  xlim(2010, NA) + # to tu mam jen kvuli nasich decek jinak odstranit
+  ylim(1, 2) + # jinak 1, NA nechat pokud neni xlim
   theme_minimal()
 print(p8)
 
